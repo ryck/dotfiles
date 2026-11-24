@@ -7,5 +7,5 @@ idiomatic_version_file_enable_tools = ["node", "python"]
 
 [tools]
 node = "lts"
-python = "3.15"
+python = "latest"
 go = "latest"
