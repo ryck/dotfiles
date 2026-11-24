@@ -118,7 +118,6 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/sudo
     zgenom ohmyzsh plugins/command-not-found
     zgenom ohmyzsh plugins/npm
-    zgenom ohmyzsh plugins/yarn
     zgenom ohmyzsh plugins/extract
     zgenom ohmyzsh plugins/macos
     zgenom ohmyzsh plugins/vscode

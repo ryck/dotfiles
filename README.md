@@ -154,7 +154,6 @@ These OMZ plugins are included:
 - [`git`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git) — git aliases and functions.
 - [`history-substring-search`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search) — browser-like history search.
 - [`npm`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/npm) — provides completion as well as adding many useful aliases.
-- [`yarn`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/yarn) — the same as for `npm`, but for `yarn`
 - [`mise`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mise) — activates `mise` runtimes (see [`config/mise`](./config/mise/config.toml)).
 - [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) — GitHub CLI aliases and completions.
 - [`sudo`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sudo) — `[Esc] [Esc]` to re-run previous command with sudo.
