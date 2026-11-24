@@ -23,9 +23,8 @@ set -o noclobber
 _extend_path() {
   [[ -d "$1" ]] || return
 
-  if ! echo "$PATH" | tr ":" "\n" | grep -qx "$1" ; then
-    export PATH="$1:$PATH"
-  fi
+  # Pure zsh: (Ie) is the exact index of $1 in $path, 0 if missing
+  (( ${path[(Ie)$1]} )) || path=("$1" $path)
 }
 
 # Add custom bin to $PATH
