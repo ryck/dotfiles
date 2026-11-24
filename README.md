@@ -50,7 +50,7 @@ Compared with [denysdovhan/dotfiles](https://github.com/denysdovhan/dotfiles):
 - **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
 - **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder) and `uv` (completions).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
-- `EDITOR` is `nvim` when it's installed, and `XDG_CONFIG_HOME` is set.
+- `EDITOR` is VS Code (`code --wait`) when it's installed, falling back to `nvim`, then `vim`; over SSH it's `vim`. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.
 - Personal settings live in tracked [`lib/exports.zsh`](./lib/exports.zsh) and [`lib/functions.zsh`](./lib/functions.zsh). `custom/` stays a gitignored extension point.
 
 ### Tools
@@ -229,7 +229,7 @@ Dotfiles also include some functions that will make your life easier. See code i
   - `cyan bold` for frag;
   - `red bold` for old lines;
   - `green bold` for new lines.
-- Default editor is [Vim](http://www.vim.org/) instead of [Vi](http://www.tutorialspoint.com/unix/unix-vi-editor.htm).
+- Editor follows `$EDITOR` (VS Code locally, Vim over SSH).
 - `push.default` set as `current`.
 - `pull.rebase` set to `true`.
 - `push.autoSetupRemote` set to `true`.

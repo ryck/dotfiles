@@ -26,7 +26,7 @@ alias q="~ && clear"
 [ -d ~/Projects/Repos ]       && alias pjr='cd ~/Projects/Repos'
 
 # Commands Shortcuts
-alias e="$EDITOR"
+alias e="${EDITOR%% --wait}" # open without blocking the terminal
 alias -- +x='chmod +x'
 alias x+='chmod +x'
 

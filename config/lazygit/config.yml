@@ -7,4 +7,4 @@ git:
   pagers:
     - pager: delta --dark --paging=never
 os:
-  editPreset: "nvim"
+  editPreset: "vscode"

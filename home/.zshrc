@@ -68,11 +68,15 @@ if [[ -n "$SSH_CONNECTION" ]]; then
   else
     export EDITOR='vi'
   fi
+elif command -v code >/dev/null 2>&1; then
+  # --wait: block until the file's tab is closed (needed by git, gh, etc.)
+  export EDITOR='code --wait'
 elif command -v nvim >/dev/null 2>&1; then
   export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
+export VISUAL="$EDITOR"
 
 # Better formatting for time command
 export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
