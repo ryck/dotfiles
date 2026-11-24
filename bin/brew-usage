@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""
+brew-usage: show when each Homebrew formula/cask you installed was last used.
+
+Uses the last access time of each formula's binaries and each cask app's main
+executable, sorted from longest unused to most recent.
+
+Caveats:
+  - Identical dates on many packages usually mean a brew install/upgrade
+    touched them, not that you used them.
+  - Casks without an .app in /Applications (fonts, pkg installers, CLI casks)
+    show "no app/binary" and can't be judged.
+"""
+import json, os, subprocess, time, glob
+
+env = dict(os.environ, XDG_CONFIG_HOME=os.path.expanduser("~/.config"), HOMEBREW_NO_AUTO_UPDATE="1")
+info = json.loads(subprocess.run(["brew", "info", "--json=v2", "--installed"],
+                                 capture_output=True, text=True, env=env).stdout)
+leaves = set(subprocess.run(["brew", "leaves", "--installed-on-request"], capture_output=True,
+                            text=True, env=env).stdout.split())
+prefix = subprocess.run(["brew", "--prefix"], capture_output=True, text=True).stdout.strip()
+now = time.time()
+rows = []
+
+def newest_atime(paths):
+    best = None
+    for p in paths:
+        try:
+            if os.path.isfile(p):
+                a = os.stat(p).st_atime
+                best = a if best is None or a > best else best
+        except OSError:
+            pass
+    return best
+
+for f in info["formulae"]:
+    name = f["name"]
+    if name not in leaves and f["full_name"] not in leaves:
+        continue  # only things you installed on purpose, not dependencies
+    inst = f["installed"][-1]["version"] if f["installed"] else None
+    bins = glob.glob(f"{prefix}/Cellar/{name}/{inst}/bin/*") + glob.glob(f"{prefix}/Cellar/{name}/{inst}/sbin/*")
+    rows.append(("formula", f["full_name"], newest_atime(bins), bool(bins), f.get("desc") or ""))
+
+for c in info["casks"]:
+    apps = []
+    for art in c.get("artifacts", []):
+        if isinstance(art, dict) and "app" in art:
+            apps += [a for a in art["app"] if isinstance(a, str)]
+    exes = []
+    for a in apps:
+        exes += glob.glob(f"/Applications/{os.path.basename(a)}/Contents/MacOS/*")
+    rows.append(("cask", c["full_token"], newest_atime(exes), bool(exes), c.get("desc") or ""))
+
+def days(a):
+    return 10**9 if a is None else (now - a) / 86400
+
+# Oldest use first; packages we can't judge (no app/binary) go last
+rows.sort(key=lambda r: (not r[3], -days(r[2])))
+for kind, name, a, has, desc in rows:
+    when = "no app/binary (font, plugin or library)" if not has else \
+           ("never" if a is None else f"{days(a):5.0f}d ago  {time.strftime('%Y-%m-%d', time.localtime(a))}")
+    print(f"{kind:7} {name:38.38} {when:42.42} {desc[:50]}")

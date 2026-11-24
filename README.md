@@ -235,6 +235,7 @@ Other plugins:
 
 Dotfiles also include some functions that will make your life easier. See code in [`bin/`](./bin).
 
+- [`brew-usage`](./bin/brew-usage) — list installed Homebrew formulae and apps by when you last used them, to spot ones you can remove.
 - [`emptytrash`](./bin/emptytrash) — empty the Trash on all mounted volumes and the main HDD.
 - [`git-cleanup`](./bin/git-cleanup) — removes old Git branches and does other cleanup.
 - [`git-fork`](./bin/git-fork) — add remote upstream.
