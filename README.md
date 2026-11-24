@@ -51,7 +51,8 @@ Missing feature? Fork this repo and make it better.
 
 - **[mise](https://mise.jdx.dev)** manages Node (LTS), Python (latest) and Go (latest), replacing nvm, fnm and pyenv. `update` upgrades them, and `bootstrap.sh` installs them.
 - **New CLI tools:** [atuin](https://atuin.sh) (history search on `Ctrl-R`), [lazygit](https://github.com/jesseduffield/lazygit), [ripgrep](https://github.com/BurntSushi/ripgrep), [fd](https://github.com/sharkdp/fd), [jq](https://jqlang.org), [yq](https://github.com/mikefarah/yq), [btop](https://github.com/aristocratos/btop), [tealdeer](https://github.com/tealdeer-rs/tealdeer), [uv](https://docs.astral.sh/uv/).
-- **Brewfile** is rebuilt from what's actually installed on my Mac, and third-party taps are marked `trusted: true`.
+- **Brewfile** is rebuilt from what's actually installed on my Mac, with unused apps removed. Third-party taps are marked `trusted: true`.
+- **[`brew-usage`](./bin/brew-usage)** lists installed Homebrew packages by when you last used them, to find ones to remove.
 
 ### Startup time
 
@@ -210,7 +211,7 @@ Aliases are going to make your work fast and enjoyable. See code in `$DOTFILES/l
   - **`cc`** → `claude`; **`ccx`** → Claude Code in `~/Projects/Playground` with auto permissions.
   - **`cx`** → `codex`; **`cxx`** → Codex in `~/Projects/Playground` with `--full-auto`.
 
-Depending on installed tools, `ls` uses `eza`, `cat` uses `bat`, `cd` uses `zoxide`, and `top` uses `btop`.
+Depending on installed tools, `ls` uses `eza`, `cat` uses `bat`, `cd` uses `zoxide`, and `top` uses `btop`. `rm`, `cp` and `mv` ask before deleting or overwriting (`-i`, from the `common-aliases` plugin).
 
 ### Zsh plugins
 
