@@ -56,7 +56,7 @@ brew "prettyping" # nicer ping
 brew "wifi-password"
 brew "terminal-notifier"
 brew "wyne/tap/fasder"
-brew "sinelaw/fresh/fresh"
+brew "sinelaw/fresh/fresh" # terminal editor, $EDITOR fallback (see .zshrc)
 brew "taylorwilsdon/tap/reclaimed"
 brew "mole"
 brew "clippy"

@@ -60,21 +60,19 @@ less_opts=(
 )
 export LESS="${less_opts[*]}"
 
-# Default editor for local and remote sessions
-if [[ -n "$SSH_CONNECTION" ]]; then
-  # on the server
-  if command -v vim >/dev/null 2>&1; then
-    export EDITOR='vim'
-  else
-    export EDITOR='vi'
-  fi
-elif command -v code >/dev/null 2>&1; then
+# Default editor: VS Code locally, then fresh, nano, and vim as a last resort
+# (VS Code is skipped over SSH, where it can't open a window)
+if [[ -z "$SSH_CONNECTION" ]] && command -v code >/dev/null 2>&1; then
   # --wait: block until the file's tab is closed (needed by git, gh, etc.)
   export EDITOR='code --wait'
-elif command -v nvim >/dev/null 2>&1; then
-  export EDITOR='nvim'
-else
+elif command -v fresh >/dev/null 2>&1; then
+  export EDITOR='fresh'
+elif command -v nano >/dev/null 2>&1; then
+  export EDITOR='nano'
+elif command -v vim >/dev/null 2>&1; then
   export EDITOR='vim'
+else
+  export EDITOR='vi'
 fi
 export VISUAL="$EDITOR"
 

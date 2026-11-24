@@ -17,7 +17,7 @@ There are tons of useful things in here:
 - [mise](https://mise.jdx.dev) for Node, Python and Go versions (replaces nvm, fnm and pyenv).
 - [Atuin](https://atuin.sh) for searchable, synced shell history on `Ctrl-R`.
 - [fzf](https://github.com/junegunn/fzf) and [fzf-tab](https://github.com/Aloxaf/fzf-tab) for fuzzy file, folder and completion pickers.
-- VS Code as `$EDITOR` (Vim over SSH).
+- VS Code as `$EDITOR`, with the [fresh](https://github.com/sinelaw/fresh) terminal editor as fallback.
 - Lots of useful [aliases](./lib/aliases.zsh).
 - Modern CLI tools like `eza` (smarter `ls`), `bat` (smarter `cat`), `zoxide` (smarter `cd`), `delta`, `lazygit`, `ripgrep`, `fd`, `btop`.
 - Git config, global `.gitignore` file and aliases.
@@ -44,7 +44,7 @@ Missing feature? Fork this repo and make it better.
 - **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
 - **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder) and `uv` (completions).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
-- `EDITOR` is VS Code (`code --wait`) when it's installed, falling back to `nvim`, then `vim`; over SSH it's `vim`. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.
+- `EDITOR` is VS Code (`code --wait`), falling back to [fresh](https://github.com/sinelaw/fresh), then `nano`, then `vim`. Over SSH VS Code is skipped. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.
 - Personal settings live in tracked [`lib/exports.zsh`](./lib/exports.zsh) and [`lib/functions.zsh`](./lib/functions.zsh). `custom/` stays a gitignored extension point.
 
 ### Tools
@@ -258,7 +258,7 @@ Dotfiles also include some functions that will make your life easier. See code i
   - `red bold` for old lines;
   - `green bold` for new lines.
 - Diffs are shown with [delta](https://github.com/dandavison/delta) (line numbers, `n`/`N` to jump between files, clickable paths).
-- Editor follows `$EDITOR` (VS Code locally, Vim over SSH).
+- Editor follows `$EDITOR` (VS Code locally, fresh over SSH or without VS Code).
 - `push.default` set as `current`.
 - `pull.rebase` set to `true`.
 - `push.autoSetupRemote` set to `true`.
