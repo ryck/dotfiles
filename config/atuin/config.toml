@@ -1,0 +1,21 @@
+# Atuin: searchable, synced shell history
+# https://docs.atuin.sh/configuration/config/
+
+# Keep the up arrow for zsh-history-substring-search; Ctrl-R opens Atuin
+# (the up-arrow binding is disabled in lib/tools.zsh via --disable-up-arrow)
+search_mode = "fuzzy"
+filter_mode = "global"
+style = "compact"
+inline_height = 20
+show_preview = true
+enter_accept = false
+
+# Sync is off until you run `atuin register` / `atuin login`
+auto_sync = true
+update_check = false
+
+# Don't record commands that start with a space or look like secrets
+secrets_filter = true
+history_filter = [
+  "^ ",
+]

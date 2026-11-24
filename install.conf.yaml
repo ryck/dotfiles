@@ -1,22 +1,37 @@
 - defaults:
+    link:
+      create: true
+      relink: true
     shell:
       stdout: true
       stderr: true
 
-- clean: ['~']
+- clean: ['~', '~/.config']
 
+# Dotfiles in ~
 - link:
     ~/:
       glob: true
       path: home/.*
-      create: true
-      relink: true
       force: true
 
-- create:
-    - ~/.config
+# ~/.config is a real directory. Only the apps listed here are linked, so other
+# apps can write their state to ~/.config without touching this repo.
+- link:
+    ~/.config/agents: config/agents
+    ~/.config/atuin: config/atuin
+    ~/.config/ghostty: config/ghostty
+    ~/.config/husky: config/husky
+    ~/.config/lazygit: config/lazygit
+    ~/.config/mise: config/mise
+    ~/.config/rex: config/rex
+    ~/.config/whosthere: config/whosthere
+    ~/.config/yazi: config/yazi
 
 - shell:
+    - description: Seeding app-owned configs (copied once, never linked)
+      command: ./scripts/seed.sh
+
     - description: Installing submodules
       command: git submodule update --init --recursive
 
