@@ -8,6 +8,9 @@
 # Export path to root of dotfiles repo
 export DOTFILES=${DOTFILES:="$HOME/.dotfiles"}
 
+# Use ~/.config on macOS too (lazygit, atuin, etc.)
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+
 # Locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -66,6 +69,8 @@ if [[ -n "$SSH_CONNECTION" ]]; then
   else
     export EDITOR='vi'
   fi
+elif command -v nvim >/dev/null 2>&1; then
+  export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
@@ -77,9 +82,6 @@ export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E
 # Oh My Zsh
 # ------------------------------------------------------------------------------
 export ZSH_DISABLE_COMPFIX=true
-
-# Autoload node version when changing cwd
-zstyle ':omz:plugins:nvm' autoload true
 
 # SSH agent lazy loading and quiet mode
 zstyle :omz:plugins:ssh-agent lazy yes
@@ -97,82 +99,81 @@ fi
 # Spaceship project directory (for local development)
 SPACESHIP_PROJECT="$HOME/Projects/Repos/spaceship/spaceship-prompt"
 
-# Reset zgen on change
+# Regenerate the zgenom init script when these files change
+# (N) keeps the glob from failing when custom/ is empty
 export ZGEN_RESET_ON_CHANGE=(
   "${HOME}/.zshrc"
-  "${DOTFILES}"/lib/*.zsh
-  "${DOTFILES}"/custom/*.zsh
+  "${DOTFILES}"/lib/*.zsh(N)
+  "${DOTFILES}"/custom/*.zsh(N)
 )
-# Load zgen
-source "${HOME}/.zgen/zgen.zsh"
 
-# Load zgen init script
-if ! zgen saved; then
-    echo "Creating a zgen save"
+# Load zgenom (maintained fork of zgen)
+# https://github.com/jandamm/zgenom
+source "${HOME}/.zgenom/zgenom.zsh"
 
-    zgen oh-my-zsh
+# Load zgenom init script
+if ! zgenom saved; then
+    echo "Creating a zgenom save"
+
+    zgenom ohmyzsh
 
     # Oh-My-Zsh plugins
-    zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/tmux
-    zgen oh-my-zsh plugins/history-substring-search
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/command-not-found
-    zgen oh-my-zsh plugins/npm
-    zgen oh-my-zsh plugins/yarn
-    zgen oh-my-zsh plugins/nvm
-    zgen oh-my-zsh plugins/fnm
-    zgen oh-my-zsh plugins/pyenv
-    zgen oh-my-zsh plugins/extract
-    zgen oh-my-zsh plugins/ssh-agent
-    zgen oh-my-zsh plugins/gpg-agent
-    zgen oh-my-zsh plugins/macos
-    zgen oh-my-zsh plugins/vscode
-    zgen oh-my-zsh plugins/gh
-    zgen oh-my-zsh plugins/common-aliases
-    zgen oh-my-zsh plugins/direnv
-    zgen oh-my-zsh plugins/docker
-    zgen oh-my-zsh plugins/docker-compose
-    zgen oh-my-zsh plugins/node
-    zgen oh-my-zsh plugins/deno
-    zgen oh-my-zsh plugins/bun
-    zgen oh-my-zsh plugins/tldr
-    zgen oh-my-zsh plugins/fzf
-    zgen oh-my-zsh plugins/codex
+    zgenom ohmyzsh plugins/brew
+    zgenom ohmyzsh plugins/git
+    zgenom ohmyzsh plugins/tmux
+    zgenom ohmyzsh plugins/history-substring-search
+    zgenom ohmyzsh plugins/sudo
+    zgenom ohmyzsh plugins/command-not-found
+    zgenom ohmyzsh plugins/npm
+    zgenom ohmyzsh plugins/yarn
+    zgenom ohmyzsh plugins/extract
+    zgenom ohmyzsh plugins/ssh-agent
+    zgenom ohmyzsh plugins/gpg-agent
+    zgenom ohmyzsh plugins/macos
+    zgenom ohmyzsh plugins/vscode
+    zgenom ohmyzsh plugins/gh
+    zgenom ohmyzsh plugins/common-aliases
+    zgenom ohmyzsh plugins/docker
+    zgenom ohmyzsh plugins/docker-compose
+    zgenom ohmyzsh plugins/node
+    zgenom ohmyzsh plugins/bun
+    zgenom ohmyzsh plugins/tldr
+    zgenom ohmyzsh plugins/fzf
+    zgenom ohmyzsh plugins/codex
+    zgenom ohmyzsh plugins/mise
 
     # Like cd but with z-zsh capabilities
     if command -v zoxide >/dev/null 2>&1; then
-      zgen oh-my-zsh plugins/zoxide
+      zgenom ohmyzsh plugins/zoxide
     fi
 
     # Per-directory env vars
     if command -v direnv >/dev/null 2>&1; then
-      zgen oh-my-zsh plugins/direnv
+      zgenom ohmyzsh plugins/direnv
     fi
 
     # Custom plugins
-    zgen load chriskempson/base16-shell
-    zgen load djui/alias-tips
-    zgen load hlissner/zsh-autopair
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-autosuggestions
-    zgen load Aloxaf/fzf-tab
+    zgenom load tinted-theming/tinted-shell
+    zgenom load djui/alias-tips
+    zgenom load hlissner/zsh-autopair
+    zgenom load zsh-users/zsh-syntax-highlighting
+    zgenom load zsh-users/zsh-autosuggestions
+    zgenom load Aloxaf/fzf-tab
 
     # Files
-    zgen load $DOTFILES/lib
-    zgen load $DOTFILES/custom
+    zgenom load $DOTFILES/lib
+    zgenom load $DOTFILES/custom
 
     # Load Spaceship prompt from remote
     if [[ ! -d "$SPACESHIP_PROJECT" ]]; then
-      zgen load spaceship-prompt/spaceship-prompt spaceship
+      zgenom load spaceship-prompt/spaceship-prompt spaceship
     fi
 
     # Completions
-    zgen load zsh-users/zsh-completions src
+    zgenom load zsh-users/zsh-completions src
 
     # Save all to init script
-    zgen save
+    zgenom save
 fi
 
 # Load Spaceship form local project

@@ -49,7 +49,7 @@ on_start() {
   info '  _ / /_/ // /_/ // /_ / __// // //  __/(__  )  '
   info ' (_)\__,_/ \____/ \__//_/  /_//_/ \___//____/   '
   info '                                                '
-  info '              by @denysdovhan                   '
+  info '        by @ryck, based on @denysdovhan        '
   info '                                                '
 }
 
@@ -57,23 +57,48 @@ update_dotfiles() {
   info "Updating dotfiles..."
 
   cd "$DOTFILES" || exit
-  git pull origin master
+
+  # Never pull over local edits: commit them, or move machine-specific
+  # settings to ~/.zshlocal, ~/.gitlocal or custom/
+  if [[ -n "$(git status --porcelain --untracked-files=no)" ]]; then
+    error "You have uncommitted changes in $DOTFILES:"
+    git status --short --untracked-files=no
+    error "Commit or stash them, then run update again."
+    cd - > /dev/null 2>&1
+    return
+  fi
+
+  git pull --rebase --autostash origin master
   ./install --except shell
   cd - > /dev/null 2>&1 || exit
 
   finish
 }
 
-update_zgen() {
-  info "Updating Zgen and Zsh plugins..."
+update_zgenom() {
+  info "Updating zgenom and Zsh plugins..."
 
-  local zgen_source="${HOME}/.zgen/zgen.zsh"
+  local zgenom_source="${HOME}/.zgenom/zgenom.zsh"
 
-  if [[ ! -f "$zgen_source" ]]; then
-    "$DOTFILES/scripts/zgen.sh"
+  if [[ ! -f "$zgenom_source" ]]; then
+    "$DOTFILES/scripts/zgenom.sh"
   fi
 
-  zsh -c 'source "${HOME}/.zgen/zgen.zsh" && zgen selfupdate && zgen update'
+  zsh -c 'source "${HOME}/.zgenom/zgenom.zsh" && zgenom selfupdate && zgenom update'
+
+  finish
+}
+
+update_mise() {
+  if ! _exists mise; then
+    return
+  fi
+
+  info "Updating mise runtimes..."
+
+  mise upgrade
+
+  finish
 }
 
 update_brew() {
@@ -132,8 +157,9 @@ main() {
 
   on_start "$*"
   update_dotfiles "$*"
-  update_zgen "$*"
+  update_zgenom "$*"
   update_brew "$*"
+  update_mise "$*"
   update_apt "$*"
   on_finish "$*"
 }
