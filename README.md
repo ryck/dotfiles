@@ -26,10 +26,49 @@ There are tons of useful things in here:
 - Modern CLI tools like `eza` (smarter `ls`), `bat` (smarter `cat`), `zoxide` (smarter `cd`), `delta`, `lazygit`, `ripgrep`, `fd`, `btop`.
 - Git config, global `.gitignore` file and aliases.
 - Homebrew bundle for bootstrapping a macOS workstation.
-- A lot of useful [bins](https://github.com/denysdovhan/dotfiles/tree/master/bin).
+- A lot of useful [bins](./bin).
 - `update` script for updating dotfiles, Zsh plugins, brew, and apt packages.
 
 Missing feature? Fork this repo and make it better.
+
+## What's different from upstream
+
+Compared with [denysdovhan/dotfiles](https://github.com/denysdovhan/dotfiles):
+
+### `git pull` never gets blocked
+
+- **`~/.config` is a real directory**, not a symlink into the repo. Upstream links the whole folder, so every app writes its state into the repo. Here only the apps in [`config/`](./config) are linked one by one. See [How `~/.config` works](#how-config-works).
+- **App-owned configs** (Zed, gh) are copied once from [`seed/`](./seed) instead of linked. `scripts/sync.sh` compares them with the repo.
+- **`update` refuses to pull over local edits** and pulls with `--rebase --autostash`.
+
+### Shell
+
+- **[zgenom](https://github.com/jandamm/zgenom)** instead of zgen, which is archived. It's pinned to `~/.zgenom`.
+- **Fewer Oh My Zsh plugins:** dropped `nvm`, `fnm`, `pyenv`, `deno`, a duplicate `direnv`, `gpg-agent`, `ssh-agent`, `codex`, `node` and `yarn`. Added `mise`.
+- **[tinted-shell](https://github.com/tinted-theming/tinted-shell)** instead of the abandoned base16-shell.
+- **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
+- `EDITOR` is `nvim` when it's installed, and `XDG_CONFIG_HOME` is set.
+- Personal settings live in tracked [`lib/exports.zsh`](./lib/exports.zsh) and [`lib/functions.zsh`](./lib/functions.zsh). `custom/` stays a gitignored extension point.
+
+### Tools
+
+- **[mise](https://mise.jdx.dev)** manages Node (LTS), Python (latest) and Go (latest), replacing nvm, fnm and pyenv. `update` upgrades them, and `bootstrap.sh` installs them.
+- **New CLI tools:** [atuin](https://atuin.sh) (history search on `Ctrl-R`), [lazygit](https://github.com/jesseduffield/lazygit), [ripgrep](https://github.com/BurntSushi/ripgrep), [fd](https://github.com/sharkdp/fd), [jq](https://jqlang.org), [yq](https://github.com/mikefarah/yq), [btop](https://github.com/aristocratos/btop), [tealdeer](https://github.com/tealdeer-rs/tealdeer), [trash](https://github.com/ali-rantakari/trash), [uv](https://docs.astral.sh/uv/).
+- **Brewfile** is rebuilt from what's actually installed on my Mac, and third-party taps are marked `trusted: true`.
+
+### Startup time
+
+Measured on my Mac with `time zsh -i -c exit` (warm, average of 3 runs):
+
+| Step | Startup |
+| --- | --- |
+| Upstream setup (zgen, all plugins) | ~0.85s |
+| zgenom + dropping nvm/fnm/pyenv/deno | ~0.72s |
+| Dropping `gpg-agent`, `ssh-agent`, `codex`, `node` | ~0.34s |
+| Dropping `yarn` | ~0.22s |
+| Pure-zsh `_extend_path` | **~0.18s** |
+
+That's about **4.7× faster**. Most of the gain came from `gpg-agent`, which ran `gpgconf` on every shell start (~380ms), and `yarn`, which ran `yarn global bin` (~130ms).
 
 ## Installation
 
