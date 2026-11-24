@@ -1,5 +1,11 @@
+# mise: runtime versions (replaces nvm, fnm and pyenv)
+# https://mise.jdx.dev/configuration.html
+
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+# Respect .nvmrc / .node-version / .python-version in projects
+idiomatic_version_file_enable_tools = ["node", "python"]
 
 [tools]
 node = "lts"
+python = "3.13"
+go = "latest"
