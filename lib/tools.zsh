@@ -10,12 +10,6 @@ fi
 if _exists zoxide; then
   alias cd='z'
 fi
-# Avoid stupidity with trash-cli:
-# https://github.com/sindresorhus/trash-cli
-# or use default rm -i
-if _exists trash; then
-  alias rm='trash'
-fi
 
 # Better ls with icons, tree view and more
 # https://github.com/eza-community/eza

@@ -49,7 +49,6 @@ brew "btop"       # better top
 brew "tealdeer"   # fast tldr client
 brew "glow"       # markdown renderer in terminal
 brew "yazi"       # terminal file explorer
-brew "trash"      # safe rm (aliased in lib/tools.zsh)
 brew "direnv"     # per-directory env vars
 brew "ncdu"       # disk usage
 brew "fastfetch"  # system info
