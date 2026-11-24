@@ -131,6 +131,7 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/copypath
     zgenom ohmyzsh plugins/copyfile
     zgenom ohmyzsh plugins/copybuffer
+    zgenom ohmyzsh plugins/dirhistory
     zgenom ohmyzsh plugins/mise
 
     # Like cd but with z-zsh capabilities
