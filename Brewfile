@@ -169,5 +169,4 @@ mas "Home Assistant", id: 1099568401
 mas "Menu Bar Calendar", id: 1558360383
 mas "NordVPN", id: 905953485
 mas "Pure Paste", id: 1611378436
-mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
