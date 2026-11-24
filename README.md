@@ -158,8 +158,6 @@ These OMZ plugins are included:
 - [`mise`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mise) — activates `mise` runtimes (see [`config/mise`](./config/mise/config.toml)).
 - [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) — GitHub CLI aliases and completions.
 - [`sudo`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sudo) — `[Esc] [Esc]` to re-run previous command with sudo.
-- [`ssh-agent`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/ssh-agent) — automatically starts ssh-agent to set up and load whichever credentials you want for ssh connections.
-- [`gpg-agent`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/gpg-agent) — enables `gpg-agent` if it is not running.
 - [`docker`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker) and [`docker-compose`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose) — Docker helpers.
 - [`fzf`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf), [`direnv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv), [`bun`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/bun), and more.
 - More are listed in `.zshrc` (it's hard to keep the list updated).

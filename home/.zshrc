@@ -83,15 +83,6 @@ export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E
 # ------------------------------------------------------------------------------
 export ZSH_DISABLE_COMPFIX=true
 
-# SSH agent lazy loading and quiet mode
-zstyle :omz:plugins:ssh-agent lazy yes
-zstyle :omz:plugins:ssh-agent quiet yes
-
-# Use passphase from macOS keychain
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  zstyle :omz:plugins:ssh-agent ssh-add-args --apple-load-keychain
-fi
-
 # ------------------------------------------------------------------------------
 # Dependencies
 # ------------------------------------------------------------------------------
@@ -129,19 +120,15 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/npm
     zgenom ohmyzsh plugins/yarn
     zgenom ohmyzsh plugins/extract
-    zgenom ohmyzsh plugins/ssh-agent
-    zgenom ohmyzsh plugins/gpg-agent
     zgenom ohmyzsh plugins/macos
     zgenom ohmyzsh plugins/vscode
     zgenom ohmyzsh plugins/gh
     zgenom ohmyzsh plugins/common-aliases
     zgenom ohmyzsh plugins/docker
     zgenom ohmyzsh plugins/docker-compose
-    zgenom ohmyzsh plugins/node
     zgenom ohmyzsh plugins/bun
     zgenom ohmyzsh plugins/tldr
     zgenom ohmyzsh plugins/fzf
-    zgenom ohmyzsh plugins/codex
     zgenom ohmyzsh plugins/mise
 
     # Like cd but with z-zsh capabilities
@@ -186,11 +173,6 @@ fi
 # ------------------------------------------------------------------------------
 # Load additional zsh files
 # ------------------------------------------------------------------------------
-
-# OpenAI Codex CLI completions
-if _exists codex; then
-  eval "$(codex completion zsh)"
-fi
 
 # Bazel environment variables
 if [[ -f "$HOME/.bazelenv" ]]; then
