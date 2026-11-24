@@ -22,12 +22,14 @@ There are tons of useful things in here:
 - [zgenom](https://github.com/jandamm/zgenom) (maintained fork of zgen) for dependency management.
 - [mise](https://mise.jdx.dev) for Node, Python and Go versions (replaces nvm, fnm and pyenv).
 - [Atuin](https://atuin.sh) for searchable, synced shell history on `Ctrl-R`.
+- [fzf](https://github.com/junegunn/fzf) and [fzf-tab](https://github.com/Aloxaf/fzf-tab) for fuzzy file, folder and completion pickers.
+- VS Code as `$EDITOR` (Vim over SSH).
 - Lots of useful [aliases](./lib/aliases.zsh).
 - Modern CLI tools like `eza` (smarter `ls`), `bat` (smarter `cat`), `zoxide` (smarter `cd`), `delta`, `lazygit`, `ripgrep`, `fd`, `btop`.
 - Git config, global `.gitignore` file and aliases.
 - Homebrew bundle for bootstrapping a macOS workstation.
 - A lot of useful [bins](./bin).
-- `update` script for updating dotfiles, Zsh plugins, brew, and apt packages.
+- `update` script for updating dotfiles, Zsh plugins, brew, mise runtimes, and apt packages.
 
 Missing feature? Fork this repo and make it better.
 
@@ -69,13 +71,12 @@ Measured on my Mac with `time zsh -i -c exit` (warm, average of 3 runs):
 | zgenom + dropping nvm/fnm/pyenv/deno | ~0.72s |
 | Dropping `gpg-agent`, `ssh-agent`, `codex`, `node` | ~0.34s |
 | Dropping `yarn` | ~0.22s |
-| Pure-zsh `_extend_path` | **~0.18s** |
+| Pure-zsh `_extend_path` | ~0.18s |
+| Adding you-should-use, fast-syntax-highlighting, `copypath`, `copyfile`, `copybuffer`, `dirhistory`, `uv` | **~0.20s** |
 
-That's about **4.7× faster**. Most of the gain came from `gpg-agent`, which ran `gpgconf` on every shell start (~380ms), and `yarn`, which ran `yarn global bin` (~130ms).
+That's about **4× faster** than upstream, with more features. Most of the gain came from `gpg-agent`, which ran `gpgconf` on every shell start (~380ms), and `yarn`, which ran `yarn global bin` (~130ms).
 
 ## Installation
-
-Dotfiles are installed by running one of the following commands in your terminal, just copy one of the following commands and execute in the terminal:
 
 Tell Git who you are using these commands:
 
@@ -103,11 +104,11 @@ On a new Mac, then bootstrap it. This installs Homebrew, Git and Zsh, everything
 ./scripts/bootstrap.sh
 ```
 
-`./install` also links [`config/agents/AGENTS.md`](./config/agents/AGENTS.md) into supported agent config directories when those directories already exist (`~/.codex`, `~/.cursor`, `~/.config/agents`, `~/.config/github-copilot`, and `~/.config/opencode`).
+`./install` also links [`config/agents/AGENTS.md`](./config/agents/AGENTS.md) into supported agent config directories when those directories already exist: `~/.codex`, `~/.cursor`, `~/.config/github-copilot`, `~/.config/opencode`, and `~/.claude` (as `CLAUDE.md`).
 
 ## Updating
 
-Use single command to get the latest updates:
+Use a single command to get the latest updates:
 
 ```sh
 update
@@ -142,6 +143,22 @@ I suggest you to organize project folder as follows:
 └── Repos       # for long-term projects
 ```
 
+### Keyboard shortcuts
+
+| Keys | Does |
+| --- | --- |
+| `Ctrl-R` | Search history with [Atuin](https://atuin.sh). Press `Ctrl-R` again to switch between all history, this machine, this session, and this folder. |
+| `↑` / `↓` | Search history for commands starting with what you've typed |
+| `Tab` | Completion menu you can fuzzy-search ([fzf-tab](https://github.com/Aloxaf/fzf-tab)) |
+| `Ctrl-T` | Pick a file with fzf and insert its path |
+| `Esc` then `C` | Pick a folder with fzf and `cd` into it (`Option-C` if your terminal sends Option as Alt) |
+| `Esc` `Esc` | Re-run the current or previous command with `sudo` |
+| `Ctrl-O` | Copy what you've typed to the clipboard without running it |
+| `Option-←` / `Option-→` | Back / forward through folders you've visited (`dirhistory`) |
+| `Option-↑` / `Option-↓` | Go to the parent folder / into the first subfolder |
+| `Ctrl-←` / `Ctrl-→` | Jump one word back / forward |
+| `...` | Typing dots expands them: `...` → `../..` |
+
 ### Aliases
 
 Aliases are going to make your work fast and enjoyable. See code in `$DOTFILES/lib/aliases.zsh`. Here is what's included:
@@ -163,16 +180,22 @@ Aliases are going to make your work fast and enjoyable. See code in `$DOTFILES/l
   - **`pjj`** → `cd ~/Projects/Job`
   - **`pjl`** → `cd ~/Projects/Playground`
 - Commands Shortcuts
-  - **`e`** → `$EDITOR`
+  - **`e`** → open in `$EDITOR` without waiting (VS Code)
   - **`+x`** → `chmod +x`
   - **`x+`** → `chmod +x`
   - **`reload`** → reload `~/.zshrc`
   - **`clr`** → `clear`
+  - **`q`** → go home and clear the screen
 - Open
   - **`open <FILE>`** — open file from terminal.
   - **`o <FILE>`** — open file from terminal.
   - **`oo`** — open current folder.
   - **`term`** — open iTerm.
+- macOS
+  - **`show`** / **`hide`** — show or hide hidden files in Finder.
+  - **`cleanup`** — recursively delete `.DS_Store` files.
+  - **`cdf`** — `cd` into the folder open in the front Finder window.
+  - **`copypath`** — copy the current folder's path. **`copyfile <file>`** copies a file's contents.
 - Misc
   - **`update`** — get updates (Runs `$DOTFILES/scripts/update.sh`).
   - **`bootstrap`** — run machine bootstrap (Runs `$DOTFILES/scripts/bootstrap.sh`).
@@ -182,26 +205,39 @@ Aliases are going to make your work fast and enjoyable. See code in `$DOTFILES/l
   - **`path`** — print $PATH in readable view.
   - **`getpage`** — download web page with all assets.
   - **`get`** — download file with original filename.
-  - **`git-root`** — jump to the current repo root.
-  - **`help`** — use `tldr` when available.
-  - **`lg`** — open `lazygit` when available.
+  - **`git-root`** / **`cdgr`** — jump to the current repo root.
+  - **`mkd <dir>`** — create a folder and `cd` into it.
+  - **`extract <file>`** — unpack any archive.
+  - **`ybw`**, **`yba`**, **`ytw`**, **`ytu`** — `yarn build:watch`, `build:all`, `test:watch`, `test:unit`.
+- Tools (only when installed)
+  - **`help`** → `tldr`.
+  - **`lg`** → `lazygit`.
+  - **`md <file>`** → render Markdown with `glow`.
+  - **`top`** → `btop`.
+  - **`lt`** → tree view with `eza`; **`l`** → long list; **`la`** → long list including hidden files.
+  - **`cc`** → `claude`; **`ccx`** → Claude Code in `~/Projects/Playground` with auto permissions.
+  - **`cx`** → `codex`; **`cxx`** → Codex in `~/Projects/Playground` with `--full-auto`.
 
-Depending on installed tools, `ls` uses `eza`, `cat` uses `bat`, `cd` uses `zoxide`, and `rm` uses `trash`.
+Depending on installed tools, `ls` uses `eza`, `cat` uses `bat`, `cd` uses `zoxide`, `rm` uses `trash`, and `top` uses `btop`.
 
-### Oh-My-Zsh plugins
+### Zsh plugins
 
-These OMZ plugins are included:
+Oh My Zsh plugins (see [`.zshrc`](./home/.zshrc)):
 
-- [`brew`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/brew) — Homebrew completions and helpers.
-- [`git`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git) — git aliases and functions.
-- [`history-substring-search`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search) — browser-like history search.
-- [`npm`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/npm) — provides completion as well as adding many useful aliases.
-- [`mise`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mise) — activates `mise` runtimes (see [`config/mise`](./config/mise/config.toml)).
-- [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) — GitHub CLI aliases and completions.
-- [`sudo`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sudo) — `[Esc] [Esc]` to re-run previous command with sudo.
-- [`docker`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker) and [`docker-compose`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose) — Docker helpers.
-- [`fzf`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf), [`direnv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv), [`bun`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/bun), and more.
-- More are listed in `.zshrc` (it's hard to keep the list updated).
+- **Git & GitHub:** [`git`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) (aliases like `gst`, `gco`, `gp`), [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) (completions).
+- **History & navigation:** [`history-substring-search`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search), [`fzf`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf), [`zoxide`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zoxide), [`dirhistory`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory).
+- **Runtimes & packages:** [`mise`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mise) (see [`config/mise`](./config/mise/config.toml)), [`npm`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/npm), [`bun`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/bun), [`uv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/uv), [`brew`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/brew), [`direnv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv).
+- **Containers & terminal:** [`docker`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker), [`docker-compose`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose), [`tmux`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux).
+- **Helpers:** [`sudo`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo), [`extract`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/extract), [`copypath`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copypath), [`copyfile`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copyfile), [`copybuffer`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copybuffer), [`common-aliases`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases), [`command-not-found`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found), [`tldr`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tldr), [`macos`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos), [`vscode`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode).
+
+Other plugins:
+
+- [Spaceship](https://github.com/spaceship-prompt/spaceship-prompt) prompt.
+- [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting) and [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions).
+- [fzf-tab](https://github.com/Aloxaf/fzf-tab) for fuzzy `Tab` completion, plus [zsh-completions](https://github.com/zsh-users/zsh-completions).
+- [zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) reminds you when an alias exists for what you typed.
+- [zsh-autopair](https://github.com/hlissner/zsh-autopair) closes quotes and brackets.
+- [tinted-shell](https://github.com/tinted-theming/tinted-shell) for base16 terminal color schemes.
 
 ### Bin
 
@@ -229,6 +265,7 @@ Dotfiles also include some functions that will make your life easier. See code i
   - `cyan bold` for frag;
   - `red bold` for old lines;
   - `green bold` for new lines.
+- Diffs are shown with [delta](https://github.com/dandavison/delta) (line numbers, `n`/`N` to jump between files, clickable paths).
 - Editor follows `$EDITOR` (VS Code locally, Vim over SSH).
 - `push.default` set as `current`.
 - `pull.rebase` set to `true`.
@@ -240,7 +277,7 @@ Dotfiles also include some functions that will make your life easier. See code i
 
 #### Git Aliases
 
-- **`git a`** → `git add` — patch mode for specified files.
+- **`git a`** → `git add` — stage files.
 - **`git ua`** → `git reset HEAD` — unstage files.
 - **`git b`** → `git branch` — list, create, or delete branches.
 - **`git c`** → `git commit` — record changes to the repository.
@@ -250,7 +287,7 @@ Dotfiles also include some functions that will make your life easier. See code i
 - **`git cb`** → `git checkout -b` — create and checkout branch.
 - **`git sw`** → `git switch` — switch branches.
 - **`git swc`** → `git switch -c` — create and switch branch.
-- **`git ap`** → `git add -p` — add file contents to the index.
+- **`git ap`** → `git add -p` — stage changes hunk by hunk.
 - **`git ca`** → `git commit -a` — commit with automatically stage files that have been modified and deleted.
 - **`git cm`** → `git commit -m` — commit with commit message.
 - **`git cam`** → `git commit -am` — add all files and commit with message.
@@ -258,8 +295,8 @@ Dotfiles also include some functions that will make your life easier. See code i
 - **`git main`** — go to `main` branch and pull from remote.
 - **`git master`** — go to `master` branch and pull from remote.
 - **`git develop`** — go to `develop` branch and pull from remote.
-- **`git remain`** — fetch latest `main` and merge it into the current branch.
-- **`git remaster`** — fetch latest `master` and merge it into the current branch.
+- **`git memain`** / **`git memaster`** — fetch latest `main` / `master` and merge it into the current branch.
+- **`git remain`** / **`git remaster`** — fetch latest `main` / `master` and rebase the current branch onto it (with autostash).
 - **`git git`** — do not complain about `git git`.
 - **`git l`** — commits log with pretty single line format.
 - **`git ll`** — log with list of changed files for each commit.
