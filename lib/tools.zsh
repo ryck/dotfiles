@@ -20,10 +20,10 @@ fi
 # Better ls with icons, tree view and more
 # https://github.com/eza-community/eza
 if _exists eza; then
-  unalias ls
+  unalias ls 2>/dev/null
   alias ls='eza --icons --header --git --hyperlink'
   alias lt='eza --icons --tree'
-  unalias l
+  unalias l 2>/dev/null
   alias l='ls -l'
   alias la='ls -lAh'
 fi
@@ -63,4 +63,17 @@ fi
 if _exists codex; then
   alias cx='codex'
   alias cxx='codex --cd ~/Projects/Playground --full-auto'
+fi
+
+# Atuin: searchable, synced shell history on Ctrl-R
+# Up arrow stays with zsh-history-substring-search
+# https://github.com/atuinsh/atuin
+if _exists atuin; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
+# Better top
+# https://github.com/aristocratos/btop
+if _exists btop; then
+  alias top='btop'
 fi

@@ -62,7 +62,14 @@ alias get="curl -O -L"
 alias ybw="yarn build:watch"
 alias yba="yarn build:all"
 alias ytw="yarn test:watch"
-alias ytu="yarn test:unit":
+alias ytu="yarn test:unit"
 
 alias git-root='cd $(git rev-parse --show-toplevel)'
 alias cdgr='git-root'
+
+# macOS: show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
