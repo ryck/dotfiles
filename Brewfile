@@ -8,14 +8,14 @@
 # ------------------------------------------------------------------------------
 # Taps
 # ------------------------------------------------------------------------------
-tap "anomalyco/tap"
-tap "immurok/tap"
-tap "oven-sh/bun"
-tap "ramonvermeulen/whosthere"
-tap "sinelaw/fresh"
-tap "taylorwilsdon/tap"
-tap "wouterdebie/tap"
-tap "wyne/tap"
+tap "anomalyco/tap", trusted: true
+tap "immurok/tap", trusted: true
+tap "oven-sh/bun", trusted: true
+tap "ramonvermeulen/whosthere", trusted: true
+tap "sinelaw/fresh", trusted: true
+tap "taylorwilsdon/tap", trusted: true
+tap "wouterdebie/tap", trusted: true
+tap "wyne/tap", trusted: true
 
 # ------------------------------------------------------------------------------
 # Shell & core
