@@ -5,7 +5,7 @@
 - `home/`: source of symlinked dotfiles in `~` (for example `home/.zshrc`, `home/.gitconfig`).
 - `config/`: per-app configs symlinked into `~/.config/<app>` (listed in `install.conf.yaml`). `~/.config` itself is a real directory.
 - `seed/`: app-owned configs (mirroring `$HOME` paths) that apps rewrite themselves. They're copied once by `scripts/seed.sh`, never linked.
-- `lib/`: shared Zsh modules loaded by shell config (`aliases.zsh`, `exports.zsh`, `functions.zsh`, `tools.zsh`, `smartdots.zsh`, `lscolors.zsh`).
+- `lib/`: shared Zsh modules loaded by shell config (`aliases.zsh`, `exports.zsh`, `functions.zsh`, `keys.zsh`, `tools.zsh`, `smartdots.zsh`, `lscolors.zsh`).
 - `bin/`: small executable utilities available on PATH (`git-upstream`, `git-cleanup`, `password`).
 - `scripts/`: maintenance scripts for this repository (`bootstrap.sh`, `update.sh`, `projects.sh`, `zgenom.sh`, `seed.sh`, `sync.sh`).
 - `custom/`: local, gitignored `*.zsh` overrides (an extension point; never commit them). The owner's personal settings belong in `lib/`.
