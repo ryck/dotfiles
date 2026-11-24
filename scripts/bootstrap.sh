@@ -173,6 +173,20 @@ install_software() {
   finish
 }
 
+install_runtimes() {
+  if ! _exists mise; then
+    error "Error: mise is not available, skipping runtimes"
+    return
+  fi
+
+  info "Installing runtimes with mise (node, python, go)..."
+
+  # ~/.config/mise/config.toml is linked by ./install
+  mise install
+
+  finish
+}
+
 install_npm() {
   # Do not instal npm on non-macOS machines
   if [ "$(uname)" != "Darwin" ]; then
@@ -188,7 +202,14 @@ install_npm() {
 
   echo "Installing: ${packages[*]}"
 
-  npm install -g "${packages[@]}"
+  # Use mise's node, since the shell hasn't activated mise yet
+  if _exists mise; then
+    mise exec node -- npm install -g "${packages[@]}"
+  elif _exists npm; then
+    npm install -g "${packages[@]}"
+  else
+    error "Error: npm is not available"
+  fi
 
   finish
 }
@@ -226,6 +247,7 @@ main() {
   install_git "$*"
   install_zsh "$*"
   install_software "$*"
+  install_runtimes "$*"
   install_npm "$*"
   on_finish "$*"
 }

@@ -55,6 +55,12 @@ cd $HOME/.dotfiles
 ./install
 ```
 
+On a new Mac, then bootstrap it. This installs Homebrew, Git and Zsh, everything in the [`Brewfile`](./Brewfile) (including `mise`), the Node/Python/Go runtimes from [`config/mise`](./config/mise/config.toml) via `mise install`, and a few global npm packages:
+
+```sh
+./scripts/bootstrap.sh
+```
+
 `./install` also links [`config/agents/AGENTS.md`](./config/agents/AGENTS.md) into supported agent config directories when those directories already exist (`~/.codex`, `~/.cursor`, `~/.config/agents`, `~/.config/github-copilot`, and `~/.config/opencode`).
 
 ## Updating
