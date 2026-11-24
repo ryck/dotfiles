@@ -1,4 +1,10 @@
-# Denys Dovhan’s dotfiles
+# Ricardo’s dotfiles
+
+> Based on [denysdovhan/dotfiles](https://github.com/denysdovhan/dotfiles). The `upstream` remote points there, so new upstream changes can be cherry-picked:
+>
+> ```sh
+> git fetch upstream && git log master..upstream/master
+> ```
 
 <p align="center">
   <img alt="Spaceship with Hyper and One Dark" src="https://user-images.githubusercontent.com/10276208/36086434-5de52ace-0ff2-11e8-8299-c67f9ab4e9bd.gif" width="980px">
@@ -13,9 +19,11 @@ There are tons of useful things in here:
 - Syntax highlighting of commands while they are typed.
 - Automatically closing and deleting of quotes and brackets when you type them.
 - Browser-like substring search for history.
-- [zgen](https://github.com/tarjoilija/zgen) for dependency management.
+- [zgenom](https://github.com/jandamm/zgenom) (maintained fork of zgen) for dependency management.
+- [mise](https://mise.jdx.dev) for Node, Python and Go versions (replaces nvm, fnm and pyenv).
+- [Atuin](https://atuin.sh) for searchable, synced shell history on `Ctrl-R`.
 - Lots of useful [aliases](./lib/aliases.zsh).
-- Modern CLI tools like `eza` (smarter `ls`), `bat` (smarter `cat`), `zoxide` (smarter `cd`).
+- Modern CLI tools like `eza` (smarter `ls`), `bat` (smarter `cat`), `zoxide` (smarter `cd`), `delta`, `lazygit`, `ripgrep`, `fd`, `btop`.
 - Git config, global `.gitignore` file and aliases.
 - Homebrew bundle for bootstrapping a macOS workstation.
 - A lot of useful [bins](https://github.com/denysdovhan/dotfiles/tree/master/bin).
@@ -38,7 +46,7 @@ Clone dotfiles repo:
 
 ```sh
 # Clone dotfiles repo
-git clone https://github.com/denysdovhan/dotfiles.git $HOME/.dotfiles
+git clone https://github.com/ryck/dotfiles.git $HOME/.dotfiles
 
 # Go to the dotfiles directory
 cd $HOME/.dotfiles
@@ -47,7 +55,7 @@ cd $HOME/.dotfiles
 ./install
 ```
 
-`./install` also links [`agents/AGENTS.md`](./agents/AGENTS.md) into supported agent config directories when those directories already exist (`~/.codex`, `~/.cursor`, `~/.config/agents`, `~/.config/github-copilot`, and `~/.config/opencode`).
+`./install` also links [`config/agents/AGENTS.md`](./config/agents/AGENTS.md) into supported agent config directories when those directories already exist (`~/.codex`, `~/.cursor`, `~/.config/agents`, `~/.config/github-copilot`, and `~/.config/opencode`).
 
 ## Updating
 
@@ -57,11 +65,22 @@ Use single command to get the latest updates:
 update
 ```
 
-This command refreshes `sudo`, pulls the latest dotfiles, reruns `./install --except shell`, updates `zgen` and Zsh plugins, and updates `brew` when available.
+This command refreshes `sudo`, pulls the latest dotfiles, reruns `./install --except shell`, updates `zgenom` and Zsh plugins, and updates `brew` and `mise` when available.
+
+`update` refuses to pull if the repo has uncommitted changes. Commit them, or move machine-specific settings to `~/.zshlocal`, `~/.gitlocal` or `custom/`.
+
+## How `~/.config` works
+
+`~/.config` is a real directory, not a symlink to this repo. Apps can write whatever they want there without touching the repo.
+
+- **Linked configs** live in [`config/`](./config) and are symlinked per app by `install.conf.yaml` (`~/.config/ghostty` → `config/ghostty`, etc.). Editing them edits the repo. To track a new app, move its folder into `config/` and add a `link:` line.
+- **App-owned configs** that apps rewrite themselves (Zed `settings.json`, gh `config.yml`) live in [`seed/`](./seed). `scripts/seed.sh` copies them into `$HOME` once, only if they're missing, so the app owns the live copy and the repo never gets dirty.
+  - `./scripts/sync.sh` shows a diff between the live copies and `seed/`.
+  - `./scripts/sync.sh --pull` copies the live copies into `seed/` so you can review and commit them.
 
 ## Under the hood
 
-> **Note:** You may put your custom settings into `~/.zshlocal`.
+> **Note:** You may put your custom settings into `~/.zshlocal`, or into `custom/*.zsh` (loaded automatically and never committed).
 
 ### Projects tree
 
@@ -130,15 +149,13 @@ These OMZ plugins are included:
 - [`history-substring-search`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search) — browser-like history search.
 - [`npm`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/npm) — provides completion as well as adding many useful aliases.
 - [`yarn`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/yarn) — the same as for `npm`, but for `yarn`
-- [`nvm`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/nvm) — auto-sourcing `nvm`.
-- [`fnm`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fnm) — `fnm` integration.
-- [`pyenv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/pyenv) — `pyenv` integration.
+- [`mise`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mise) — activates `mise` runtimes (see [`config/mise`](./config/mise/config.toml)).
 - [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) — GitHub CLI aliases and completions.
 - [`sudo`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/sudo) — `[Esc] [Esc]` to re-run previous command with sudo.
 - [`ssh-agent`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/ssh-agent) — automatically starts ssh-agent to set up and load whichever credentials you want for ssh connections.
 - [`gpg-agent`](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/gpg-agent) — enables `gpg-agent` if it is not running.
 - [`docker`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker) and [`docker-compose`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose) — Docker helpers.
-- [`fzf`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf), [`direnv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv), [`bun`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/bun), [`deno`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/deno), and more.
+- [`fzf`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf), [`direnv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv), [`bun`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/bun), and more.
 - More are listed in `.zshrc` (it's hard to keep the list updated).
 
 ### Bin
@@ -225,4 +242,4 @@ Resources that I used to make these dotfiles better:
 
 ## License
 
-MIT © [Denys Dovhan](https://denysdovhan.com)
+MIT © [Denys Dovhan](https://denysdovhan.com), Ricardo Gonzalez

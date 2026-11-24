@@ -2,11 +2,13 @@
 
 ## Project Structure & Module Organization
 
-- `home/`: source of symlinked dotfiles (for example `home/.zshrc`, `home/.gitconfig`).
-- `lib/`: shared Zsh modules loaded by shell config (`aliases.zsh`, `smartdots.zsh`, `lscolors.zsh`).
+- `home/`: source of symlinked dotfiles in `~` (for example `home/.zshrc`, `home/.gitconfig`).
+- `config/`: per-app configs symlinked into `~/.config/<app>` (listed in `install.conf.yaml`). `~/.config` itself is a real directory.
+- `seed/`: app-owned configs (mirroring `$HOME` paths) that apps rewrite themselves. They're copied once by `scripts/seed.sh`, never linked.
+- `lib/`: shared Zsh modules loaded by shell config (`aliases.zsh`, `exports.zsh`, `functions.zsh`, `tools.zsh`, `smartdots.zsh`, `lscolors.zsh`).
 - `bin/`: small executable utilities available on PATH (`git-upstream`, `git-cleanup`, `password`).
-- `scripts/`: maintenance scripts for this repository (`bootstrap.sh`, `update.sh`, `projects.sh`, `zgen.sh`).
-- `custom/`: machine- or user-specific overrides and notes.
+- `scripts/`: maintenance scripts for this repository (`bootstrap.sh`, `update.sh`, `projects.sh`, `zgenom.sh`, `seed.sh`, `sync.sh`).
+- `custom/`: local, gitignored `*.zsh` overrides (an extension point; never commit them). The owner's personal settings belong in `lib/`.
 - `dotbot/`: vendored Dotbot submodule used by `./install` to create links from `install.conf.yaml`.
 
 ## Build, Test, and Development Commands
@@ -16,7 +18,9 @@
 - `./scripts/bootstrap.sh`: interactive first-machine bootstrap (Homebrew, Git, Zsh, npm globals).
 - `./scripts/update.sh`: pull latest dotfiles and run package manager updates.
 - `./scripts/projects.sh`: create `~/Projects/{Repos,Forks,Job,Playground}` on macOS.
-- `./scripts/zgen.sh`: clone or update `~/.zgen` plugin manager.
+- `./scripts/zgenom.sh`: clone or update the `~/.zgenom` plugin manager.
+- `./scripts/seed.sh`: copy `seed/` files into `$HOME` if they're missing.
+- `./scripts/sync.sh [--pull]`: diff live app-owned configs against `seed/` (or copy them back).
 
 ## Workflow
 
