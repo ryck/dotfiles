@@ -1,10 +1,4 @@
-# Ricardo’s dotfiles
-
-> Based on [denysdovhan/dotfiles](https://github.com/denysdovhan/dotfiles). The `upstream` remote points there, so new upstream changes can be cherry-picked:
->
-> ```sh
-> git fetch upstream && git log master..upstream/master
-> ```
+# ryck’s dotfiles
 
 <p align="center">
   <img alt="Spaceship with Hyper and One Dark" src="https://user-images.githubusercontent.com/10276208/36086434-5de52ace-0ff2-11e8-8299-c67f9ab4e9bd.gif" width="980px">
@@ -33,13 +27,11 @@ There are tons of useful things in here:
 
 Missing feature? Fork this repo and make it better.
 
-## What's different from upstream
-
-Compared with [denysdovhan/dotfiles](https://github.com/denysdovhan/dotfiles):
+## Highlights
 
 ### `git pull` never gets blocked
 
-- **`~/.config` is a real directory**, not a symlink into the repo. Upstream links the whole folder, so every app writes its state into the repo. Here only the apps in [`config/`](./config) are linked one by one. See [How `~/.config` works](#how-config-works).
+- **`~/.config` is a real directory**, not a symlink into the repo. Linking the whole folder would let every app write its state into the repo, so only the apps in [`config/`](./config) are linked one by one. See [How `~/.config` works](#how-config-works).
 - **App-owned configs** (Zed, gh) are copied once from [`seed/`](./seed) instead of linked. `scripts/sync.sh` compares them with the repo.
 - **`update` refuses to pull over local edits** and pulls with `--rebase --autostash`.
 
@@ -67,14 +59,14 @@ Measured on my Mac with `time zsh -i -c exit` (warm, average of 3 runs):
 
 | Step | Startup |
 | --- | --- |
-| Upstream setup (zgen, all plugins) | ~0.85s |
+| Original setup (zgen, all plugins) | ~0.85s |
 | zgenom + dropping nvm/fnm/pyenv/deno | ~0.72s |
 | Dropping `gpg-agent`, `ssh-agent`, `codex`, `node` | ~0.34s |
 | Dropping `yarn` | ~0.22s |
 | Pure-zsh `_extend_path` | ~0.18s |
 | Adding you-should-use, fast-syntax-highlighting, `copypath`, `copyfile`, `copybuffer`, `dirhistory`, `uv` | **~0.20s** |
 
-That's about **4× faster** than upstream, with more features. Most of the gain came from `gpg-agent`, which ran `gpgconf` on every shell start (~380ms), and `yarn`, which ran `yarn global bin` (~130ms).
+That's about **4× faster** than the original setup, with more features. Most of the gain came from `gpg-agent`, which ran `gpgconf` on every shell start (~380ms), and `yarn`, which ran `yarn global bin` (~130ms).
 
 ## Installation
 
@@ -321,6 +313,10 @@ Resources that I used to make these dotfiles better:
 
 - [GitHub ❤ ~/](http://dotfiles.github.com/)
 - [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles)
+
+## Credits
+
+Originally based on [Denys Dovhan’s dotfiles](https://github.com/denysdovhan/dotfiles).
 
 ## License
 

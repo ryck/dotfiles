@@ -52,7 +52,7 @@ on_start() {
   info "  _ / /_/ // /_/ // /_ / __// // //  __/(__  ) "
   info " (_)\__,_/ \____/ \__//_/  /_//_/ \___//____/  "
   info "                                               "
-  info "        by @ryck, based on @denysdovhan         "
+  info "                     by @ryck                  "
   info "                                               "
 
   info "This script will guide you through installing git, zsh and dofiles itself."
