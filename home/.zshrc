@@ -109,6 +109,8 @@ export ZGEN_RESET_ON_CHANGE=(
 
 # Load zgenom (maintained fork of zgen)
 # https://github.com/jandamm/zgenom
+# Always use ~/.zgenom, even if an old ~/.zgen directory exists
+export ZGEN_DIR="${HOME}/.zgenom/sources"
 source "${HOME}/.zgenom/zgenom.zsh"
 
 # Load zgenom init script
