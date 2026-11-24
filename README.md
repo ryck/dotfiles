@@ -46,6 +46,9 @@ Compared with [denysdovhan/dotfiles](https://github.com/denysdovhan/dotfiles):
 - **[zgenom](https://github.com/jandamm/zgenom)** instead of zgen, which is archived. It's pinned to `~/.zgenom`.
 - **Fewer Oh My Zsh plugins:** dropped `nvm`, `fnm`, `pyenv`, `deno`, a duplicate `direnv`, `gpg-agent`, `ssh-agent`, `codex`, `node` and `yarn`. Added `mise`.
 - **[tinted-shell](https://github.com/tinted-theming/tinted-shell)** instead of the abandoned base16-shell.
+- **[zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)** instead of alias-tips, which started Python before every command (~30ms each).
+- **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
+- **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed) and `uv` (completions).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
 - `EDITOR` is `nvim` when it's installed, and `XDG_CONFIG_HOME` is set.
 - Personal settings live in tracked [`lib/exports.zsh`](./lib/exports.zsh) and [`lib/functions.zsh`](./lib/functions.zsh). `custom/` stays a gitignored extension point.

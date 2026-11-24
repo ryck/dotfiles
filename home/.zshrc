@@ -127,6 +127,10 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/bun
     zgenom ohmyzsh plugins/tldr
     zgenom ohmyzsh plugins/fzf
+    zgenom ohmyzsh plugins/uv
+    zgenom ohmyzsh plugins/copypath
+    zgenom ohmyzsh plugins/copyfile
+    zgenom ohmyzsh plugins/copybuffer
     zgenom ohmyzsh plugins/mise
 
     # Like cd but with z-zsh capabilities
@@ -141,9 +145,9 @@ if ! zgenom saved; then
 
     # Custom plugins
     zgenom load tinted-theming/tinted-shell
-    zgenom load djui/alias-tips
+    zgenom load MichaelAquilina/zsh-you-should-use
     zgenom load hlissner/zsh-autopair
-    zgenom load zsh-users/zsh-syntax-highlighting
+    zgenom load zdharma-continuum/fast-syntax-highlighting
     zgenom load zsh-users/zsh-autosuggestions
     zgenom load Aloxaf/fzf-tab
 
