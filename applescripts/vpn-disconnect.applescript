@@ -10,8 +10,6 @@
 
 # Documentation:
 # @raycast.description Disconnect from GlobalProtect VPN
-# @raycast.author denysdovhan
-# @raycast.authorURL https://raycast.com/denysdovhan
 
 tell application "System Events" to tell process "GlobalProtect"
   repeat 2 times

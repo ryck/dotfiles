@@ -10,8 +10,6 @@
 
 # Documentation:
 # @raycast.description Connect to GlobalProtect VPN
-# @raycast.author denysdovhan
-# @raycast.authorURL https://raycast.com/denysdovhan
 
 tell application "System Events" to tell process "GlobalProtect"
   repeat 2 times

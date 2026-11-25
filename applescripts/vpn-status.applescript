@@ -10,8 +10,6 @@
 
 # Documentation:
 # @raycast.description Check the status of GlobalProtect VPN
-# @raycast.author denysdovhan
-# @raycast.authorURL https://raycast.com/denysdovhan
 
 tell application "System Events" to tell process "GlobalProtect"
   set statusMsg to "unknown"
