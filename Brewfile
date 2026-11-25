@@ -66,7 +66,6 @@ brew "audacious"
 brew "mise"       # node, python, go, ruby versions (see config/mise)
 brew "uv"         # Python packages and tools
 brew "pnpm"
-brew "yarn"
 brew "rust"
 brew "biome"
 brew "tailwindcss"

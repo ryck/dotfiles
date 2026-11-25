@@ -32,8 +32,6 @@ _extend_path "$DOTFILES/bin" # custom scripts
 _extend_path "$HOME/.local/bin" # local bins
 _extend_path "$HOME/.npm-global/bin" # npm global packages
 _extend_path "$HOME/.rvm/bin" # RVM
-_extend_path "$HOME/.yarn/bin" # Yarn
-_extend_path "$HOME/.config/yarn/global/node_modules/.bin" # Yarn global packages
 _extend_path "$HOME/.rd/bin" # Rancher Desktop
 
 # Extend $NODE_PATH

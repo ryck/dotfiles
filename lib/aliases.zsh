@@ -58,12 +58,6 @@ alias getpage='wget --no-clobber --page-requisites --html-extension --convert-li
 # Download file with original filename
 alias get="curl -O -L"
 
-# Yarn
-alias ybw="yarn build:watch"
-alias yba="yarn build:all"
-alias ytw="yarn test:watch"
-alias ytu="yarn test:unit"
-
 alias git-root='cd $(git rev-parse --show-toplevel)'
 alias cdgr='git-root'
 

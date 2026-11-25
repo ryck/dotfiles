@@ -201,7 +201,6 @@ Aliases are going to make your work fast and enjoyable. See code in `$DOTFILES/l
   - **`git-root`** / **`cdgr`** — jump to the current repo root.
   - **`mkd <dir>`** — create a folder and `cd` into it.
   - **`extract <file>`** — unpack any archive.
-  - **`ybw`**, **`yba`**, **`ytw`**, **`ytu`** — `yarn build:watch`, `build:all`, `test:watch`, `test:unit`.
 - Tools (only when installed)
   - **`help`** → `tldr`.
   - **`lg`** → `lazygit`.

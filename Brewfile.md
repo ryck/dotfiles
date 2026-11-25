@@ -85,7 +85,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [mise](https://mise.jdx.dev/) | Node, Python and Go versions (see [`config/mise`](./config/mise/config.toml)) |
 | [uv](https://docs.astral.sh/uv/) | Fast Python package and tool manager |
 | [pnpm](https://pnpm.io/) | Fast, disk-efficient JS package manager |
-| [yarn](https://yarnpkg.com/) | JS package manager |
 | [rust](https://www.rust-lang.org/) | Rust compiler and Cargo |
 | [biome](https://biomejs.dev/) | JS/TS formatter and linter |
 | [tailwindcss](https://tailwindcss.com) | Tailwind CSS CLI |
