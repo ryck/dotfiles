@@ -24,7 +24,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 
 | Tap | Provides |
 | --- | --- |
-| [oven-sh/bun](https://github.com/oven-sh/homebrew-bun) | `bun` |
 | [ramonvermeulen/whosthere](https://github.com/ramonvermeulen/whosthere) | `whosthere` |
 | [sinelaw/fresh](https://github.com/sinelaw/fresh) | `fresh` |
 | [taylorwilsdon/tap](https://github.com/taylorwilsdon/reclaimed) | `reclaimed` |
@@ -87,7 +86,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [uv](https://docs.astral.sh/uv/) | Fast Python package and tool manager |
 | [pnpm](https://pnpm.io/) | Fast, disk-efficient JS package manager |
 | [yarn](https://yarnpkg.com/) | JS package manager |
-| [bun](https://bun.sh/) | JS runtime, bundler and package manager |
 | [rust](https://www.rust-lang.org/) | Rust compiler and Cargo |
 | [biome](https://biomejs.dev/) | JS/TS formatter and linter |
 | [tailwindcss](https://tailwindcss.com) | Tailwind CSS CLI |

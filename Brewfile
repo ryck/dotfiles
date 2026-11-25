@@ -8,7 +8,6 @@
 # ------------------------------------------------------------------------------
 # Taps
 # ------------------------------------------------------------------------------
-tap "oven-sh/bun", trusted: true
 tap "ramonvermeulen/whosthere", trusted: true
 tap "sinelaw/fresh", trusted: true
 tap "taylorwilsdon/tap", trusted: true
@@ -68,7 +67,6 @@ brew "mise"       # node, python, go, ruby versions (see config/mise)
 brew "uv"         # Python packages and tools
 brew "pnpm"
 brew "yarn"
-brew "oven-sh/bun/bun"
 brew "rust"
 brew "biome"
 brew "tailwindcss"

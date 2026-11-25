@@ -34,7 +34,6 @@ _extend_path "$HOME/.npm-global/bin" # npm global packages
 _extend_path "$HOME/.rvm/bin" # RVM
 _extend_path "$HOME/.yarn/bin" # Yarn
 _extend_path "$HOME/.config/yarn/global/node_modules/.bin" # Yarn global packages
-_extend_path "$HOME/.bun/bin" # Bun
 _extend_path "$HOME/.rd/bin" # Rancher Desktop
 
 # Extend $NODE_PATH
@@ -126,7 +125,6 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/common-aliases
     zgenom ohmyzsh plugins/docker
     zgenom ohmyzsh plugins/docker-compose
-    zgenom ohmyzsh plugins/bun
     zgenom ohmyzsh plugins/tldr
     zgenom ohmyzsh plugins/fzf
     zgenom ohmyzsh plugins/uv
