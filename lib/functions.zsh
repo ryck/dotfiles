@@ -6,6 +6,7 @@
 mkd() {
   mkdir -p "$@" && cd "$_"
 }
+alias mkcd='mkd' # replaces Oh My Zsh's mkcd/takedir
 
 # Change working directory to the top-most Finder window location
 cdf() { # short for `cdfinder`
