@@ -26,6 +26,7 @@
     ~/.config/lazygit: config/lazygit
     ~/.config/mise: config/mise
     ~/.config/rex: config/rex
+    ~/.config/spaceship: config/spaceship
     ~/.config/whosthere: config/whosthere
     ~/.config/yazi: config/yazi
 

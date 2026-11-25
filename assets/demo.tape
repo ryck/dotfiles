@@ -65,3 +65,9 @@ Right
 Sleep 800ms
 Enter
 Sleep 2.5s
+
+# Spaceship: exit code of a failed command, and time taken on the right
+Type "sleep 2 && false"
+Sleep 400ms
+Enter
+Sleep 4s

@@ -85,9 +85,6 @@ export ZSH_DISABLE_COMPFIX=true
 # Dependencies
 # ------------------------------------------------------------------------------
 
-# Spaceship project directory (for local development)
-SPACESHIP_PROJECT="$HOME/Projects/Repos/spaceship/spaceship-prompt"
-
 # Regenerate the zgenom init script when these files change
 # (N) keeps the glob from failing when custom/ is empty
 export ZGEN_RESET_ON_CHANGE=(
@@ -155,21 +152,14 @@ if ! zgenom saved; then
     zgenom load $DOTFILES/lib
     zgenom load $DOTFILES/custom
 
-    # Load Spaceship prompt from remote
-    if [[ ! -d "$SPACESHIP_PROJECT" ]]; then
-      zgenom load spaceship-prompt/spaceship-prompt spaceship
-    fi
+    # Spaceship prompt (config in config/spaceship)
+    zgenom load spaceship-prompt/spaceship-prompt spaceship
 
     # Completions
     zgenom load zsh-users/zsh-completions src
 
     # Save all to init script
     zgenom save
-fi
-
-# Load Spaceship form local project
-if [[ -d "$SPACESHIP_PROJECT" ]]; then
-  source "$SPACESHIP_PROJECT/spaceship.zsh"
 fi
 
 # ------------------------------------------------------------------------------
