@@ -8,13 +8,10 @@
 # ------------------------------------------------------------------------------
 # Taps
 # ------------------------------------------------------------------------------
-tap "anomalyco/tap", trusted: true
-tap "immurok/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "ramonvermeulen/whosthere", trusted: true
 tap "sinelaw/fresh", trusted: true
 tap "taylorwilsdon/tap", trusted: true
-tap "wouterdebie/tap", trusted: true
 tap "wyne/tap", trusted: true
 
 # ------------------------------------------------------------------------------
@@ -92,11 +89,8 @@ cask "font-jetbrains-mono"
 
 # Utils
 cask "1password"
-cask "raycast"
 cask "rectangle"
-cask "maccy"
 cask "betterdisplay"
-cask "only-switch"
 cask "pearcleaner"
 cask "numi"
 cask "gpg-suite"
@@ -104,8 +98,6 @@ cask "dropbox"
 cask "the-unarchiver"
 cask "syntax-highlight"
 cask "imageoptim"
-cask "immurok/tap/immurok"
-cask "ukrainian-typographic-keyboard"
 cask "vorssaint"
 
 # Media
@@ -113,11 +105,8 @@ cask "transmission"
 cask "handbrake-app"
 cask "vlc"
 cask "iina"
-cask "obs"
 cask "plex"
-cask "tinymediamanager"
 cask "spotify"
-cask "petrichor"
 cask "tinycast"
 
 # Terminals & editors
@@ -134,12 +123,8 @@ cask "android-platform-tools"
 cask "zulu@17"
 cask "bruno"
 cask "yaak"
-cask "mqttx"
-cask "medis"
 cask "macusb"
 cask "figma"
-cask "anomalyco/tap/hex"
-cask "wouterdebie/tap/davit"
 cask "ramonvermeulen/whosthere/whosthere"
 
 # Agents
@@ -162,9 +147,7 @@ cask "notion"
 # ------------------------------------------------------------------------------
 mas "Amphetamine", id: 937984704
 mas "Bear", id: 1091189122
-mas "Blackmagic Disk Speed Test", id: 425264550
 mas "Developer", id: 640199958
-mas "GoPro Quik", id: 561350520
 mas "Home Assistant", id: 1099568401
 mas "Menu Bar Calendar", id: 1558360383
 mas "NordVPN", id: 905953485
