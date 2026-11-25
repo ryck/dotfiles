@@ -128,6 +128,9 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/copybuffer
     zgenom ohmyzsh plugins/dirhistory
     zgenom ohmyzsh plugins/mise
+    zgenom ohmyzsh plugins/git-commit
+    zgenom ohmyzsh plugins/magic-enter
+    zgenom ohmyzsh plugins/aliases
 
     # Like cd but with z-zsh capabilities
     if command -v zoxide >/dev/null 2>&1; then

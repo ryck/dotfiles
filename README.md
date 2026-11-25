@@ -43,7 +43,7 @@ Missing feature? Fork this repo and make it better.
 - **[zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)** instead of alias-tips, which started Python before every command (~30ms each).
 - **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
 - **Spaceship config** in [`config/spaceship`](./config/spaceship/spaceship.zsh): only the sections I use (git, Node, Python, Go, Rust, Docker…), the exit code of failed commands (`✘1`), and how long slow commands took on the right.
-- **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder) and `uv` (completions).
+- **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder), `uv` (completions), `git-commit` (`git feat -s zshrc "msg"` → `feat(zshrc): msg`), `magic-enter` (`Enter` on an empty prompt runs `git status` or `ls`) and `aliases` (`als git` searches your aliases).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
 - `EDITOR` is VS Code (`code --wait`), falling back to [fresh](https://github.com/sinelaw/fresh), then `nano`, then `vim`. Over SSH VS Code is skipped. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.
 - Personal settings live in tracked [`lib/exports.zsh`](./lib/exports.zsh) and [`lib/functions.zsh`](./lib/functions.zsh). `custom/` stays a gitignored extension point.
@@ -148,6 +148,7 @@ I suggest you to organize project folder as follows:
 | `Esc` then `C` | Pick a folder with fzf and `cd` into it (`Option-C` if your terminal sends Option as Alt) |
 | `Esc` `Esc` | Re-run the current or previous command with `sudo` |
 | `Ctrl-O` | Copy what you've typed to the clipboard without running it |
+| `Enter` on an empty prompt | Run `git status` in a repo, `ls -lh` elsewhere (`magic-enter`) |
 | `Option-←` / `Option-→` | Back / forward through folders you've visited (`dirhistory`) |
 | `Option-↑` / `Option-↓` | Go to the parent folder / into the first subfolder |
 | `Ctrl-←` / `Ctrl-→` | Jump one word back / forward |
@@ -217,11 +218,11 @@ Depending on installed tools, `ls` uses `eza`, `cat` uses `bat`, `cd` uses `zoxi
 
 Oh My Zsh plugins (see [`.zshrc`](./home/.zshrc)):
 
-- **Git & GitHub:** [`git`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) (aliases like `gst`, `gco`, `gp`), [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) (completions).
+- **Git & GitHub:** [`git`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) (aliases like `gst`, `gco`, `gp`), [`git-commit`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git-commit) (`git feat`, `git fix`, `git chore`… for conventional commits), [`gh`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/gh) (completions).
 - **History & navigation:** [`history-substring-search`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search), [`fzf`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf), [`zoxide`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zoxide), [`dirhistory`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dirhistory).
 - **Runtimes & packages:** [`mise`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/mise) (see [`config/mise`](./config/mise/config.toml)), [`npm`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/npm), [`uv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/uv), [`brew`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/brew), [`direnv`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/direnv).
 - **Containers & terminal:** [`docker`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker), [`docker-compose`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose), [`tmux`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux).
-- **Helpers:** [`sudo`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo), [`extract`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/extract), [`copypath`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copypath), [`copyfile`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copyfile), [`copybuffer`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copybuffer), [`common-aliases`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases), [`command-not-found`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found), [`tldr`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tldr), [`macos`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos), [`vscode`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode).
+- **Helpers:** [`sudo`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo), [`extract`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/extract), [`copypath`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copypath), [`copyfile`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copyfile), [`copybuffer`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copybuffer), [`magic-enter`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/magic-enter), [`aliases`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/aliases) (`als`), [`common-aliases`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases), [`command-not-found`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found), [`tldr`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tldr), [`macos`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos), [`vscode`](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode).
 
 Other plugins:
 
