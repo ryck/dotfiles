@@ -201,7 +201,7 @@ Aliases are going to make your work fast and enjoyable. See code in `$DOTFILES/l
   - **`getpage`** — download web page with all assets.
   - **`get`** — download file with original filename.
   - **`git-root`** / **`cdgr`** — jump to the current repo root.
-  - **`mkd <dir>`** / **`mkcd <dir>`** — create a folder and `cd` into it.
+  - **`mkd <dir>`** — create a folder and `cd` into it.
   - **`extract <file>`** — unpack any archive.
 - Tools (only when installed)
   - **`help`** → `tldr`.
