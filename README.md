@@ -21,7 +21,7 @@ There are tons of useful things in here:
 - Lots of useful [aliases](./lib/aliases.zsh).
 - Modern CLI tools like `eza` (smarter `ls`), `bat` (smarter `cat`), `zoxide` (smarter `cd`), `delta`, `lazygit`, `ripgrep`, `fd`, `btop`.
 - Git config, global `.gitignore` file and aliases.
-- Homebrew bundle for bootstrapping a macOS workstation.
+- Homebrew bundle for bootstrapping a macOS workstation (every package is listed in [`Brewfile.md`](./Brewfile.md)).
 - A lot of useful [bins](./bin).
 - `update` script for updating dotfiles, Zsh plugins, brew, mise runtimes, and apt packages.
 
@@ -51,7 +51,7 @@ Missing feature? Fork this repo and make it better.
 
 - **[mise](https://mise.jdx.dev)** manages Node (LTS), Python (latest) and Go (latest), replacing nvm, fnm and pyenv. `update` upgrades them, and `bootstrap.sh` installs them.
 - **New CLI tools:** [atuin](https://atuin.sh) (history search on `Ctrl-R`), [lazygit](https://github.com/jesseduffield/lazygit), [ripgrep](https://github.com/BurntSushi/ripgrep), [fd](https://github.com/sharkdp/fd), [jq](https://jqlang.org), [yq](https://github.com/mikefarah/yq), [btop](https://github.com/aristocratos/btop), [tealdeer](https://github.com/tealdeer-rs/tealdeer), [uv](https://docs.astral.sh/uv/).
-- **Brewfile** is rebuilt from what's actually installed on my Mac, with unused apps removed. Third-party taps are marked `trusted: true`.
+- **Brewfile** is rebuilt from what's actually installed on my Mac, with unused apps removed. Third-party taps are marked `trusted: true`. [`Brewfile.md`](./Brewfile.md) explains how to use it and describes every package.
 - **[`brew-usage`](./bin/brew-usage)** lists installed Homebrew packages by when you last used them, to find ones to remove.
 
 ### Startup time
