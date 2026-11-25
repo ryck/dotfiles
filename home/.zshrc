@@ -151,6 +151,7 @@ if ! zgenom saved; then
     zgenom load zdharma-continuum/fast-syntax-highlighting
     zgenom load zsh-users/zsh-autosuggestions
     zgenom load Aloxaf/fzf-tab
+    zgenom load ntnyq/omz-plugin-pnpm # pnpm aliases (p, pa, pr, pd…) and PNPM_HOME
 
     # Files
     zgenom load $DOTFILES/lib

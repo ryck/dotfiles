@@ -230,6 +230,7 @@ Other plugins:
 - [fzf-tab](https://github.com/Aloxaf/fzf-tab) for fuzzy `Tab` completion, plus [zsh-completions](https://github.com/zsh-users/zsh-completions).
 - [zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) reminds you when an alias exists for what you typed.
 - [zsh-autopair](https://github.com/hlissner/zsh-autopair) closes quotes and brackets.
+- [omz-plugin-pnpm](https://github.com/ntnyq/omz-plugin-pnpm): pnpm aliases (`p`, `pa`, `pad`, `pin`, `pr`, `pd`, `pb`, `pt`, `pdx`…) and `PNPM_HOME` on `PATH`. Its `p` replaces common-aliases' `p` (`ps -f`).
 - [tinted-shell](https://github.com/tinted-theming/tinted-shell) for base16 terminal color schemes.
 
 ### Bin
