@@ -26,61 +26,61 @@ Enter
 Sleep 1s
 Show
 
-Type "# zoxide: jump to a folder by name"
+Type@1ms "# zoxide: jump to a folder by name"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "z dotfiles"
 Sleep 300ms
 Enter
 Sleep 1.5s
 
-Type "# magic-enter: Enter on an empty prompt runs gst"
+Type@1ms "# magic-enter: Enter on an empty prompt runs gst"
 Enter
-Sleep 700ms
+Sleep 2s
 Sleep 300ms
 Enter
 Sleep 2.5s
 
 Ctrl+L
-Type "# eza: ls with icons and git status"
+Type@1ms "# eza: ls with icons and git status"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "ls"
 Sleep 300ms
 Enter
 Sleep 2.5s
 
 Ctrl+L
-Type "# bat: cat with syntax highlighting"
+Type@1ms "# bat: cat with syntax highlighting"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "cat config/mise/config.toml"
 Sleep 300ms
 Enter
 Sleep 3s
 
 Ctrl+L
-Type "# eza: tree view"
+Type@1ms "# eza: tree view"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "lt config"
 Sleep 300ms
 Enter
 Sleep 3s
 
 Ctrl+L
-Type "# delta: syntax-highlighted git diffs"
+Type@1ms "# delta: syntax-highlighted git diffs"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "git show --format= 77df858 -- home/.zshrc"
 Sleep 300ms
 Enter
 Sleep 3.5s
 
 Ctrl+L
-Type "# fast-syntax-highlighting: typos turn red"
+Type@1ms "# fast-syntax-highlighting: typos turn red"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "gti"
 Sleep 1s
 Backspace 3
@@ -88,23 +88,23 @@ Type "git status"
 Sleep 1s
 Ctrl+U
 
-Type "# autopair: closes quotes and brackets"
+Type@1ms "# autopair: closes quotes and brackets"
 Enter
-Sleep 700ms
+Sleep 2s
 Type `echo "hello (world`
 Sleep 1.5s
 Ctrl+U
 
-Type "# smartdots: dots expand as you type"
+Type@1ms "# smartdots: dots expand as you type"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "cd ...."
 Sleep 1.5s
 Ctrl+U
 
-Type "# sudo: Esc Esc adds sudo"
+Type@1ms "# sudo: Esc Esc adds sudo"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "brew services list"
 Sleep 500ms
 Escape
@@ -113,36 +113,36 @@ Sleep 1.5s
 Ctrl+U
 
 Ctrl+L
-Type "# aliases: search your aliases"
+Type@1ms "# aliases: search your aliases"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "als stash"
 Sleep 300ms
 Enter
 Sleep 3s
 
 Ctrl+L
-Type "# autosuggestions: press the right arrow to accept"
+Type@1ms "# autosuggestions: press the right arrow to accept"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "cat c"
 Sleep 1.2s
 Right
 Sleep 1.2s
 Ctrl+U
 
-Type "# spaceship: exit code and time taken"
+Type@1ms "# spaceship: exit code and time taken"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "sleep 2 && false"
 Sleep 300ms
 Enter
 Sleep 3.5s
 
 Ctrl+L
-Type "# lazygit"
+Type@1ms "# lazygit"
 Enter
-Sleep 700ms
+Sleep 2s
 Type "lg"
 Sleep 300ms
 Enter
