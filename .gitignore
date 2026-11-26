@@ -7,3 +7,6 @@ custom/**/*.*sh
 
 # macOS
 .DS_Store
+
+# zsh compiled files (Spaceship compiles its config next to it)
+*.zwc
