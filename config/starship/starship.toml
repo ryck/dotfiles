@@ -10,7 +10,6 @@ $hostname\
 $git_branch\
 $git_state\
 $git_status\
-$package\
 $nodejs\
 $python\
 $golang\
@@ -19,13 +18,15 @@ $docker_context\
 $line_break\
 $jobs\
 $status\
-$sudo\
 $character"""
 
 # Right side: how long the last command took (only when over 2s)
 right_format = "$cmd_duration"
 
 add_newline = true
+
+# Give slow git commands in big repos time before warning (default 500ms)
+command_timeout = 1_000
 
 [character]
 success_symbol = "[➜](bold green)"
@@ -36,10 +37,6 @@ error_symbol = "[➜](bold red)"
 disabled = false
 symbol = "✘"
 format = "[$symbol$status]($style) "
-
-# Show when sudo credentials are cached
-[sudo]
-disabled = false
 
 [cmd_duration]
 min_time = 2_000
