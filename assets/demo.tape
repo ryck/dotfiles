@@ -180,8 +180,6 @@ Sleep 2s
 Type "lg"
 Sleep 300ms
 Enter
-Sleep 2s
-Enter
-Sleep 2.5s
+Sleep 4s
 Type "q"
 Sleep 1s

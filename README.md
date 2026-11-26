@@ -1,7 +1,7 @@
 # ryck’s dotfiles
 
 <p align="center">
-  <img alt="Spaceship prompt in Zsh with eza, bat and autosuggestions, Ayu theme" src="./assets/demo.gif" width="980px">
+  <img alt="A tour of the shell: zoxide, magic-enter, eza, bat, delta, syntax highlighting, autopair, smartdots, sudo, aliases, autosuggestions, Spaceship and lazygit" src="./assets/demo.gif" width="980px">
 </p>
 
 There are tons of useful things in here:
