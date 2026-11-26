@@ -81,6 +81,9 @@ export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E
 # ------------------------------------------------------------------------------
 export ZSH_DISABLE_COMPFIX=true
 
+# magic-enter: Enter on an empty prompt in a git repo runs this
+MAGIC_ENTER_GIT_COMMAND='gst -u .'
+
 # ------------------------------------------------------------------------------
 # Dependencies
 # ------------------------------------------------------------------------------

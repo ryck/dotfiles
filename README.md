@@ -43,7 +43,7 @@ Missing feature? Fork this repo and make it better.
 - **[zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)** instead of alias-tips, which started Python before every command (~30ms each).
 - **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
 - **Spaceship config** in [`config/spaceship`](./config/spaceship/spaceship.zsh): only the sections I use (git, Node, Python, Go, Rust, Docker…), the exit code of failed commands (`✘1`), and how long slow commands took on the right.
-- **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder), `uv` (completions), `git-commit` (`git feat -s zshrc "msg"` → `feat(zshrc): msg`), `magic-enter` (`Enter` on an empty prompt runs `git status` or `ls`) and `aliases` (`als git` searches your aliases).
+- **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder), `uv` (completions), `git-commit` (`git feat -s zshrc "msg"` → `feat(zshrc): msg`), `magic-enter` (`Enter` on an empty prompt runs `gst -u .` in a repo, `ls` elsewhere) and `aliases` (`als git` searches your aliases).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
 - `EDITOR` is VS Code (`code --wait`), falling back to [fresh](https://github.com/sinelaw/fresh), then `nano`, then `vim`. Over SSH VS Code is skipped. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.
 - Personal settings live in tracked [`lib/exports.zsh`](./lib/exports.zsh) and [`lib/functions.zsh`](./lib/functions.zsh). `custom/` stays a gitignored extension point.
@@ -148,7 +148,7 @@ I suggest you to organize project folder as follows:
 | `Esc` then `C` | Pick a folder with fzf and `cd` into it (`Option-C` if your terminal sends Option as Alt) |
 | `Esc` `Esc` | Re-run the current or previous command with `sudo` |
 | `Ctrl-O` | Copy what you've typed to the clipboard without running it |
-| `Enter` on an empty prompt | Run `git status` in a repo, `ls -lh` elsewhere (`magic-enter`) |
+| `Enter` on an empty prompt | Run `gst -u .` (`git status`) in a repo, `ls -lh` elsewhere (`magic-enter`) |
 | `Option-←` / `Option-→` | Back / forward through folders you've visited (`dirhistory`) |
 | `Option-↑` / `Option-↓` | Go to the parent folder / into the first subfolder |
 | `Ctrl-←` / `Ctrl-→` | Jump one word back / forward |
