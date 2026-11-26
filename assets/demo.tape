@@ -1,8 +1,9 @@
-# Records the README demo. Regenerate with:
+# Records the README demo (demo.gif) plus demo.mp4. Regenerate with:
 #   vhs assets/demo.tape
 # Needs vhs (brew install vhs). Run it from the repo root with a clean tree.
 
 Output assets/demo.gif
+Output assets/demo.mp4
 
 Set Shell zsh
 Set FontFamily "FiraCode Nerd Font Mono"
