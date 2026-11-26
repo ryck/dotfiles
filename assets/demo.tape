@@ -26,60 +26,76 @@ Enter
 Sleep 1s
 Show
 
-Type@1ms "# zoxide: jump to a folder by name"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}zoxide%f%b  jump to a folder by name'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "z dotfiles"
 Sleep 300ms
 Enter
 Sleep 1.5s
 
-Type@1ms "# magic-enter: Enter on an empty prompt runs gst"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}magic-enter%f%b  Enter on an empty prompt runs gst'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Sleep 300ms
 Enter
 Sleep 2.5s
 
-Ctrl+L
-Type@1ms "# eza: ls with icons and git status"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}eza%f%b  ls with icons and git status'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "ls"
 Sleep 300ms
 Enter
 Sleep 2.5s
 
-Ctrl+L
-Type@1ms "# bat: cat with syntax highlighting"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}bat%f%b  cat with syntax highlighting'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "cat config/mise/config.toml"
 Sleep 300ms
 Enter
 Sleep 3s
 
-Ctrl+L
-Type@1ms "# eza: tree view"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}eza%f%b  tree view'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "lt config"
 Sleep 300ms
 Enter
 Sleep 3s
 
-Ctrl+L
-Type@1ms "# delta: syntax-highlighted git diffs"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}delta%f%b  syntax-highlighted git diffs'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "git show --format= 77df858 -- home/.zshrc"
 Sleep 300ms
 Enter
 Sleep 3.5s
 
-Ctrl+L
-Type@1ms "# fast-syntax-highlighting: typos turn red"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}fast-syntax-highlighting%f%b  typos turn red'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "gti"
 Sleep 1s
@@ -88,22 +104,31 @@ Type "git status"
 Sleep 1s
 Ctrl+U
 
-Type@1ms "# autopair: closes quotes and brackets"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}autopair%f%b  closes quotes and brackets'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type `echo "hello (world`
 Sleep 1.5s
 Ctrl+U
 
-Type@1ms "# smartdots: dots expand as you type"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}smartdots%f%b  dots expand as you type'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "cd ...."
 Sleep 1.5s
 Ctrl+U
 
-Type@1ms "# sudo: Esc Esc adds sudo"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}sudo%f%b  Esc Esc adds sudo'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "brew services list"
 Sleep 500ms
@@ -112,18 +137,22 @@ Escape
 Sleep 1.5s
 Ctrl+U
 
-Ctrl+L
-Type@1ms "# aliases: search your aliases"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}aliases%f%b  search your aliases'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "als stash"
 Sleep 300ms
 Enter
 Sleep 3s
 
-Ctrl+L
-Type@1ms "# autosuggestions: press the right arrow to accept"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}autosuggestions%f%b  press the right arrow to accept'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "cat c"
 Sleep 1.2s
@@ -131,17 +160,22 @@ Right
 Sleep 1.2s
 Ctrl+U
 
-Type@1ms "# spaceship: exit code and time taken"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}spaceship%f%b  exit code and time taken'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "sleep 2 && false"
 Sleep 300ms
 Enter
 Sleep 3.5s
 
-Ctrl+L
-Type@1ms "# lazygit"
+Hide
+Type@1ms "clear; print -P '%B%F{yellow}lazygit%f%b'"
 Enter
+Sleep 500ms
+Show
 Sleep 2s
 Type "lg"
 Sleep 300ms
