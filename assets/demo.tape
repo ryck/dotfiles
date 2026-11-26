@@ -196,23 +196,4 @@ Sleep 2.5s
 Type "cd ../ml"
 Sleep 300ms
 Enter
-Sleep 3s
-
-Hide
-Type@1ms "cd ~/.dotfiles"
-Enter
-Sleep 500ms
-Show
-
-Hide
-Type@1ms "clear; print -P '%B%F{yellow}lazygit%f%b'"
-Enter
-Sleep 500ms
-Show
-Sleep 2s
-Type "lg"
-Sleep 300ms
-Enter
 Sleep 4s
-Type "q"
-Sleep 1s

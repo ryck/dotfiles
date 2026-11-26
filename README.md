@@ -1,7 +1,7 @@
 # ryck’s dotfiles
 
 <p align="center">
-  <img alt="A tour of the shell: zoxide, magic-enter, eza, bat, delta, syntax highlighting, autopair, smartdots, sudo, aliases, autosuggestions, Spaceship and lazygit" src="./assets/demo.gif" width="980px">
+  <img alt="A tour of the shell: zoxide, magic-enter, eza, bat, delta, syntax highlighting, autopair, smartdots, sudo, aliases, autosuggestions, Spaceship and per-project runtime versions" src="./assets/demo.gif" width="980px">
 </p>
 
 There are tons of useful things in here:
@@ -42,7 +42,7 @@ Missing feature? Fork this repo and make it better.
 - **[tinted-shell](https://github.com/tinted-theming/tinted-shell)** instead of the abandoned base16-shell.
 - **[zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)** instead of alias-tips, which started Python before every command (~30ms each).
 - **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
-- **Spaceship config** in [`config/spaceship`](./config/spaceship/spaceship.zsh): only the sections I use (git, Node, Python, Go, Rust, Docker…), the exit code of failed commands (`✘1`), and how long slow commands took on the right.
+- **Spaceship config** in [`config/spaceship`](./config/spaceship/spaceship.zsh): only the sections I use (git, Node, Python, Go, Rust, Docker…), the exit code of failed commands (`✘1`), and how long slow commands took on the right. Inside a project it shows the Node, Go or Python version mise picked for it (Python too, not only in a virtualenv).
 - **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder), `uv` (completions), `git-commit` (`git feat -s zshrc "msg"` → `feat(zshrc): msg`), `magic-enter` (`Enter` on an empty prompt runs `gst -u .` in a repo, `ls` elsewhere) and `aliases` (`als git` searches your aliases).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
 - `EDITOR` is VS Code (`code --wait`), falling back to [fresh](https://github.com/sinelaw/fresh), then `nano`, then `vim`. Over SSH VS Code is skipped. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.

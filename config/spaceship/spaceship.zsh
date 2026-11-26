@@ -31,3 +31,6 @@ SPACESHIP_RPROMPT_ORDER=(
 
 # Show the exit code of a failed command, e.g. ✘ 127
 SPACESHIP_EXIT_CODE_SHOW=true
+
+# Show the Python version in any Python project, not only inside a virtualenv
+SPACESHIP_PYTHON_SHOW=always
