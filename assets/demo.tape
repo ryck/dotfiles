@@ -24,6 +24,10 @@ Sleep 3s
 Type "add-zsh-hook -d preexec _atuin_preexec; add-zsh-hook -d precmd _atuin_precmd; ZSH_AUTOSUGGEST_STRATEGY=(history); fc -p; clear"
 Enter
 Sleep 1s
+# Throwaway projects for the runtime-version demo
+Type@1ms "export _ZO_EXCLUDE_DIRS='/tmp/*:/private/tmp/*'; rm -rf /tmp/demo; mkdir -p /tmp/demo/{legacy-app,new-app,api,ml}; echo 22 > /tmp/demo/legacy-app/.nvmrc; echo '{}' | tee /tmp/demo/{legacy-app,new-app}/package.json >/dev/null; echo 'module api' > /tmp/demo/api/go.mod; touch /tmp/demo/ml/requirements.txt; clear"
+Enter
+Sleep 1s
 Show
 
 Hide
@@ -170,6 +174,35 @@ Type "sleep 2 && false"
 Sleep 300ms
 Enter
 Sleep 3.5s
+
+Hide
+Type@1ms "cd /tmp/demo; clear; print -P '%B%F{yellow}mise + spaceship%f%b  the right Node, Go and Python version per project'"
+Enter
+Sleep 500ms
+Show
+Sleep 2s
+Type "cd legacy-app && cat .nvmrc"
+Sleep 300ms
+Enter
+Sleep 2.5s
+Type "cd ../new-app"
+Sleep 300ms
+Enter
+Sleep 2.5s
+Type "cd ../api"
+Sleep 300ms
+Enter
+Sleep 2.5s
+Type "cd ../ml"
+Sleep 300ms
+Enter
+Sleep 3s
+
+Hide
+Type@1ms "cd ~/.dotfiles"
+Enter
+Sleep 500ms
+Show
 
 Hide
 Type@1ms "clear; print -P '%B%F{yellow}lazygit%f%b'"
