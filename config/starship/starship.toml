@@ -1,0 +1,46 @@
+# Starship prompt config, linked to ~/.config/starship (STARSHIP_CONFIG in .zshrc)
+# https://starship.rs/config/
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Only the modules I use. username and hostname only show over SSH or as root.
+format = """
+$username\
+$directory\
+$hostname\
+$git_branch\
+$git_state\
+$git_status\
+$package\
+$nodejs\
+$python\
+$golang\
+$rust\
+$docker_context\
+$line_break\
+$jobs\
+$status\
+$sudo\
+$character"""
+
+# Right side: how long the last command took (only when over 2s)
+right_format = "$cmd_duration"
+
+add_newline = true
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+
+# Exit code of a failed command, e.g. ✘1
+[status]
+disabled = false
+symbol = "✘"
+format = "[$symbol$status]($style) "
+
+# Show when sudo credentials are cached
+[sudo]
+disabled = false
+
+[cmd_duration]
+min_time = 2_000
+format = "[$duration]($style)"

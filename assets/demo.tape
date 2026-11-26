@@ -166,7 +166,7 @@ Sleep 1.2s
 Ctrl+U
 
 Hide
-Type@1ms "clear; print -P '%B%F{yellow}spaceship%f%b  exit code and time taken'"
+Type@1ms "clear; print -P '%B%F{yellow}starship%f%b  exit code and time taken'"
 Enter
 Sleep 500ms
 Show
@@ -177,7 +177,7 @@ Enter
 Sleep 3.5s
 
 Hide
-Type@1ms "cd /tmp/demo; clear; print -P '%B%F{yellow}mise + spaceship%f%b  the right Node, Go and Python version per project'"
+Type@1ms "cd /tmp/demo; clear; print -P '%B%F{yellow}mise + starship%f%b  the right Node, Go and Python version per project'"
 Enter
 Sleep 500ms
 Show

@@ -51,6 +51,8 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [zoxide](https://github.com/ajeetdsouza/zoxide) | Better `cd` (jump to frequent directories) |
 | [fzf](https://junegunn.github.io/fzf/) | Fuzzy finder |
 | [atuin](https://atuin.sh/) | Searchable, synced shell history (`Ctrl-R`) |
+| [starship](https://starship.rs/) | Fast shell prompt (see [`config/starship`](./config/starship/starship.toml)) |
+| [hyperfine](https://github.com/sharkdp/hyperfine) | Command-line benchmarking |
 | [bat](https://github.com/sharkdp/bat) | Better `cat` with syntax highlighting |
 | [git-delta](https://dandavison.github.io/delta/) | Better `git diff` |
 | [lazygit](https://github.com/jesseduffield/lazygit) | Git TUI |

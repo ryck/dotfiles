@@ -158,14 +158,28 @@ if ! zgenom saved; then
     zgenom load $DOTFILES/lib
     zgenom load $DOTFILES/custom
 
-    # Spaceship prompt (config in config/spaceship)
-    zgenom load spaceship-prompt/spaceship-prompt spaceship
-
     # Completions
     zgenom load zsh-users/zsh-completions src
 
     # Save all to init script
     zgenom save
+fi
+
+# ------------------------------------------------------------------------------
+# Prompt: Starship (config in config/starship)
+# https://starship.rs
+# ------------------------------------------------------------------------------
+if (( $+commands[starship] )); then
+  export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship.toml"
+  # Cache the init script so startup doesn't run `starship init` every time.
+  # It's regenerated when the starship binary is updated.
+  _starship_init="${XDG_CACHE_HOME:-$HOME/.cache}/starship/init.zsh"
+  if [[ ! -s "$_starship_init" || "$commands[starship]" -nt "$_starship_init" ]]; then
+    mkdir -p "${_starship_init:h}"
+    starship init zsh --print-full-init >| "$_starship_init"
+  fi
+  source "$_starship_init"
+  unset _starship_init
 fi
 
 # ------------------------------------------------------------------------------

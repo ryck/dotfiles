@@ -1,13 +1,13 @@
 # ryck’s dotfiles
 
 <p align="center">
-  <img alt="A tour of the shell: zoxide, magic-enter, eza, bat, delta, syntax highlighting, autopair, smartdots, sudo, aliases, autosuggestions, Spaceship and per-project runtime versions" src="./assets/demo.gif" width="980px">
+  <img alt="A tour of the shell: zoxide, magic-enter, eza, bat, delta, syntax highlighting, autopair, smartdots, sudo, aliases, autosuggestions, Starship and per-project runtime versions" src="./assets/demo.gif" width="980px">
 </p>
 
 There are tons of useful things in here:
 
 - The usefulness of [Oh My ZSH!](http://ohmyz.sh/) is already built–in.
-- [Spaceship](https://github.com/spaceship-prompt/spaceship-prompt) as a prompt.
+- [Starship](https://starship.rs) as a prompt.
 - Tmux configured in [`~/.tmux.conf`](home/.tmux.conf), with [tmux-lean](https://github.com/denysdovhan/tmux-lean): a minimal theme with process icons and light/dark colors.
 - [Fish](https://fishshell.com/)-like autosuggestion in Zsh.
 - Syntax highlighting of commands while they are typed.
@@ -42,7 +42,7 @@ Missing feature? Fork this repo and make it better.
 - **[tinted-shell](https://github.com/tinted-theming/tinted-shell)** instead of the abandoned base16-shell.
 - **[zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)** instead of alias-tips, which started Python before every command (~30ms each).
 - **[fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)** instead of zsh-syntax-highlighting.
-- **Spaceship config** in [`config/spaceship`](./config/spaceship/spaceship.zsh): only the sections I use (git, Node, Python, Go, Rust, Docker…), the exit code of failed commands (`✘1`), and how long slow commands took on the right. Inside a project it shows the Node, Go or Python version mise picked for it (Python too, not only in a virtualenv).
+- **[Starship](https://starship.rs) instead of Spaceship**, configured in [`config/starship`](./config/starship/starship.toml): git, Node, Python, Go, Rust and Docker info, the exit code of failed commands (`✘1`), and how long slow commands took on the right. Inside a project it shows the Node, Go or Python version mise picked for it. The whole prompt draws in ~45ms, where Spaceship showed part of it after ~65ms and filled in versions ~0.4s later. Its init script is cached, so it adds nothing to startup.
 - **New Oh My Zsh plugins:** `copypath` (copy the current folder's path), `copyfile` (copy a file's contents), `copybuffer` (`Ctrl-O` copies what you've typed), `dirhistory` (`Option-←/→` back/forward through visited folders, `Option-↑` parent folder), `uv` (completions), `git-commit` (`git feat -s zshrc "msg"` → `feat(zshrc): msg`), `magic-enter` (`Enter` on an empty prompt runs `gst -u .` in a repo, `ls` elsewhere) and `aliases` (`als git` searches your aliases).
 - **`_extend_path` checks `PATH` in pure zsh** instead of running `echo | tr | grep` on every call.
 - `EDITOR` is VS Code (`code --wait`), falling back to [fresh](https://github.com/sinelaw/fresh), then `nano`, then `vim`. Over SSH VS Code is skipped. Git and lazygit follow it. `XDG_CONFIG_HOME` is set.
@@ -51,7 +51,7 @@ Missing feature? Fork this repo and make it better.
 ### Tools
 
 - **[mise](https://mise.jdx.dev)** manages Node (LTS), Python (latest) and Go (latest), replacing nvm, fnm and pyenv. `update` upgrades them, and `bootstrap.sh` installs them.
-- **New CLI tools:** [atuin](https://atuin.sh) (history search on `Ctrl-R`), [lazygit](https://github.com/jesseduffield/lazygit), [ripgrep](https://github.com/BurntSushi/ripgrep), [fd](https://github.com/sharkdp/fd), [jq](https://jqlang.org), [yq](https://github.com/mikefarah/yq), [btop](https://github.com/aristocratos/btop), [tealdeer](https://github.com/tealdeer-rs/tealdeer), [uv](https://docs.astral.sh/uv/).
+- **New CLI tools:** [atuin](https://atuin.sh) (history search on `Ctrl-R`), [lazygit](https://github.com/jesseduffield/lazygit), [ripgrep](https://github.com/BurntSushi/ripgrep), [fd](https://github.com/sharkdp/fd), [jq](https://jqlang.org), [yq](https://github.com/mikefarah/yq), [btop](https://github.com/aristocratos/btop), [tealdeer](https://github.com/tealdeer-rs/tealdeer), [uv](https://docs.astral.sh/uv/), [hyperfine](https://github.com/sharkdp/hyperfine) (benchmarking).
 - **Brewfile** is rebuilt from what's actually installed on my Mac, with unused apps removed. Third-party taps are marked `trusted: true`. [`Brewfile.md`](./Brewfile.md) explains how to use it and describes every package.
 - **[`brew-usage`](./bin/brew-usage)** lists installed Homebrew packages by when you last used them, to find ones to remove.
 
@@ -66,7 +66,8 @@ Measured on my Mac with `time zsh -i -c exit` (warm, average of 3 runs):
 | Dropping `gpg-agent`, `ssh-agent`, `codex`, `node` | ~0.34s |
 | Dropping `yarn` | ~0.22s |
 | Pure-zsh `_extend_path` | ~0.18s |
-| Adding you-should-use, fast-syntax-highlighting, `copypath`, `copyfile`, `copybuffer`, `dirhistory`, `uv` | **~0.20s** |
+| Adding you-should-use, fast-syntax-highlighting, `copypath`, `copyfile`, `copybuffer`, `dirhistory`, `uv` | ~0.20s |
+| Starship instead of Spaceship (measured with `hyperfine`, 20 runs) | **~0.21s** (Spaceship: ~0.22s) |
 
 That's about **4× faster** than the original setup, with more features. Most of the gain came from `gpg-agent`, which ran `gpgconf` on every shell start (~380ms), and `yarn`, which ran `yarn global bin` (~130ms).
 
@@ -226,7 +227,7 @@ Oh My Zsh plugins (see [`.zshrc`](./home/.zshrc)):
 
 Other plugins:
 
-- [Spaceship](https://github.com/spaceship-prompt/spaceship-prompt) prompt, configured in [`config/spaceship`](./config/spaceship/spaceship.zsh).
+- [Starship](https://starship.rs) prompt, configured in [`config/starship`](./config/starship/starship.toml).
 - [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting) and [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions).
 - [fzf-tab](https://github.com/Aloxaf/fzf-tab) for fuzzy `Tab` completion, plus [zsh-completions](https://github.com/zsh-users/zsh-completions).
 - [zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) reminds you when an alias exists for what you typed.

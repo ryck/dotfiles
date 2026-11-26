@@ -33,6 +33,8 @@ brew "eza"        # better ls
 brew "zoxide"     # better cd
 brew "fzf"        # fuzzy finder
 brew "atuin"      # searchable, synced shell history (Ctrl-R)
+brew "starship"   # shell prompt (see config/starship)
+brew "hyperfine"  # command-line benchmarking
 brew "bat"        # better cat
 brew "git-delta"  # better git diff
 brew "lazygit"    # git TUI
