@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ryck’s dotfiles">
+  <style>
+    .fg { stroke: #1f2430; }
+    @media (prefers-color-scheme: dark) { .fg { stroke: #e6e1cf; } }
+  </style>
+  <rect class="fg" x="6" y="10" width="52" height="44" rx="10" fill="none" stroke-width="5"/>
+  <path class="fg" d="M18 25 L26 32 L18 39" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="31" y="36" width="14" height="5" rx="2.5" fill="#e6b450"/>
+</svg>

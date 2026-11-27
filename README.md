@@ -1,3 +1,7 @@
+<p align="center">
+  <img alt="" src="./assets/logo.svg" width="96">
+</p>
+
 # ryck’s dotfiles
 
 <p align="center">
