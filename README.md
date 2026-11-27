@@ -4,6 +4,8 @@
 
 # ryck’s dotfiles
 
+Website: [dotfiles.ryck.dev](https://dotfiles.ryck.dev), with a one-page reference of the shortcuts, aliases and plugins below.
+
 <p align="center">
   <img alt="A tour of the shell: zoxide, magic-enter, eza, bat, delta, syntax highlighting, autopair, smartdots, sudo, aliases, autosuggestions, Starship and per-project runtime versions" src="./assets/demo.gif" width="980px">
 </p>
