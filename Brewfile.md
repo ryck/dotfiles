@@ -27,7 +27,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [ramonvermeulen/whosthere](https://github.com/ramonvermeulen/whosthere) | `whosthere` |
 | [sinelaw/fresh](https://github.com/sinelaw/fresh) | `fresh` |
 | [taylorwilsdon/tap](https://github.com/taylorwilsdon/reclaimed) | `reclaimed` |
-| [wyne/tap](https://github.com/wyne/fasder) | `fasder` |
 
 ## Shell & core
 
@@ -40,7 +39,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [neovim](https://neovim.io/) | Vim-based editor |
 | [coreutils](https://www.gnu.org/software/coreutils/) | GNU file, shell and text utilities |
 | [wget](https://www.gnu.org/software/wget/) | Download files from the web |
-| [mas](https://github.com/mas-cli/mas) | Mac App Store CLI (installs the `mas` apps below) |
 | [gh](https://cli.github.com/) | GitHub CLI |
 
 ## Modern CLI tools
@@ -69,8 +67,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [fastfetch](https://github.com/fastfetch-cli/fastfetch) | System info |
 | [prettyping](https://denilsonsa.github.io/prettyping/) | Nicer `ping` output |
 | [wifi-password](https://github.com/rauchg/wifi-password) | Show the current Wi-Fi password |
-| [terminal-notifier](https://github.com/julienXX/terminal-notifier) | Send macOS notifications from the terminal |
-| [fasder](https://github.com/wyne/fasder) | Quick access to recent files and directories |
 | [fresh](https://github.com/sinelaw/fresh) | Terminal text editor, the `$EDITOR` fallback |
 | [reclaimed](https://github.com/taylorwilsdon/reclaimed) | Disk usage analyzer with iCloud support |
 | [mole](https://mole.fit) | Clean up and optimize the Mac |
@@ -169,23 +165,9 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | --- | --- |
 | [google-chrome](https://www.google.com/chrome/) | Web browser |
 | [firefox](https://www.mozilla.org/firefox/) | Web browser |
-| [brave-browser](https://brave.com/) | Privacy-focused web browser |
 | [slack](https://slack.com/) | Team chat |
 | [discord](https://discord.com/) | Voice and text chat |
 | [telegram](https://macos.telegram.org/) | Messaging |
 | [whatsapp](https://www.whatsapp.com/) | Messaging |
 | [zoom](https://www.zoom.us/) | Video calls |
 | [notion](https://www.notion.com/) | Notes and docs |
-
-## App Store applications
-
-| App | Description |
-| --- | --- |
-| [Amphetamine](https://apps.apple.com/app/id937984704) | Keep the Mac awake |
-| [Bear](https://apps.apple.com/app/id1091189122) | Markdown notes |
-| [Developer](https://apps.apple.com/app/id640199958) | Apple developer videos and docs |
-| [Home Assistant](https://apps.apple.com/app/id1099568401) | Home Assistant companion app |
-| [Menu Bar Calendar](https://apps.apple.com/app/id1558360383) | Calendar in the menu bar |
-| [NordVPN](https://apps.apple.com/app/id905953485) | VPN |
-| [Pure Paste](https://apps.apple.com/app/id1611378436) | Paste as plain text |
-| [Xcode](https://apps.apple.com/app/id497799835) | Apple IDE and SDKs |

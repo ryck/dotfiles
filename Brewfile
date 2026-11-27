@@ -11,7 +11,6 @@
 tap "ramonvermeulen/whosthere", trusted: true
 tap "sinelaw/fresh", trusted: true
 tap "taylorwilsdon/tap", trusted: true
-tap "wyne/tap", trusted: true
 
 # ------------------------------------------------------------------------------
 # Shell & core
@@ -23,7 +22,6 @@ brew "tmux"
 brew "neovim"
 brew "coreutils"
 brew "wget"
-brew "mas"
 brew "gh"
 
 # ------------------------------------------------------------------------------
@@ -51,8 +49,6 @@ brew "ncdu"       # disk usage
 brew "fastfetch"  # system info
 brew "prettyping" # nicer ping
 brew "wifi-password"
-brew "terminal-notifier"
-brew "wyne/tap/fasder"
 brew "sinelaw/fresh/fresh" # terminal editor, $EDITOR fallback (see .zshrc)
 brew "taylorwilsdon/tap/reclaimed"
 brew "mole"
@@ -133,22 +129,9 @@ cask "copilot-cli"
 # Desktop applications
 cask "google-chrome"
 cask "firefox"
-cask "brave-browser"
 cask "slack"
 cask "discord"
 cask "telegram"
 cask "whatsapp"
 cask "zoom"
 cask "notion"
-
-# ------------------------------------------------------------------------------
-# App Store applications
-# ------------------------------------------------------------------------------
-mas "Amphetamine", id: 937984704
-mas "Bear", id: 1091189122
-mas "Developer", id: 640199958
-mas "Home Assistant", id: 1099568401
-mas "Menu Bar Calendar", id: 1558360383
-mas "NordVPN", id: 905953485
-mas "Pure Paste", id: 1611378436
-mas "Xcode", id: 497799835
