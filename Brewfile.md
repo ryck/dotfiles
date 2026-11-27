@@ -17,7 +17,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 - **Add a package:** `brew install <name>`, then add a `brew "<name>"` or `cask "<name>"` line to the right section.
 - **Remove a package:** delete its line, then run `brew bundle cleanup --force`.
 - **Find unused packages:** [`brew-usage`](./bin/brew-usage) lists installed packages by when you last used them.
-- **App Store apps** (`mas`) need you to be signed in to the App Store. The ID is the number in the app's App Store URL.
 - **Third-party taps** are marked `trusted: true` so Homebrew doesn't warn about them.
 
 ## Taps
