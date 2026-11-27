@@ -166,7 +166,7 @@ Sleep 1.2s
 Ctrl+U
 
 Hide
-Type@1ms "clear; print -P '%B%F{yellow}starship%f%b  exit code and time taken'"
+Type@1ms "clear; print -P '%B%F{yellow}starship%f%b  time taken, red prompt on failure'"
 Enter
 Sleep 500ms
 Show
