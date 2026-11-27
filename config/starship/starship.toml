@@ -17,3 +17,15 @@ format = "[$duration]($style)"
 
 [git_metrics]
 disabled = false
+
+[golang]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
