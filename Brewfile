@@ -8,7 +8,6 @@
 # ------------------------------------------------------------------------------
 # Taps
 # ------------------------------------------------------------------------------
-tap "ramonvermeulen/whosthere", trusted: true
 tap "sinelaw/fresh", trusted: true
 tap "taylorwilsdon/tap", trusted: true
 
@@ -27,11 +26,11 @@ brew "gh"
 # ------------------------------------------------------------------------------
 # Modern CLI tools
 # ------------------------------------------------------------------------------
+brew "starship"   # shell prompt (see config/starship)
 brew "eza"        # better ls
 brew "zoxide"     # better cd
 brew "fzf"        # fuzzy finder
 brew "atuin"      # searchable, synced shell history (Ctrl-R)
-brew "starship"   # shell prompt (see config/starship)
 brew "hyperfine"  # command-line benchmarking
 brew "bat"        # better cat
 brew "git-delta"  # better git diff
@@ -51,12 +50,7 @@ brew "prettyping" # nicer ping
 brew "wifi-password"
 brew "sinelaw/fresh/fresh" # terminal editor, $EDITOR fallback (see .zshrc)
 brew "taylorwilsdon/tap/reclaimed"
-brew "mole"
-brew "clippy"
-brew "copyparty"
-brew "gptfdisk"
-brew "qpdf"
-brew "audacious"
+
 
 # ------------------------------------------------------------------------------
 # Runtimes & dev tools
@@ -65,7 +59,6 @@ brew "mise"       # node, python, go, ruby versions (see config/mise)
 brew "uv"         # Python packages and tools
 brew "pnpm"
 brew "rust"
-brew "biome"
 brew "tailwindcss"
 brew "watchman"   # file watching for Jest / React Native
 brew "cocoapods"
@@ -83,11 +76,8 @@ cask "font-hasklug-nerd-font"
 cask "font-jetbrains-mono"
 
 # Utils
-cask "1password"
 cask "rectangle"
-cask "betterdisplay"
 cask "pearcleaner"
-cask "numi"
 cask "gpg-suite"
 cask "dropbox"
 cask "the-unarchiver"
@@ -96,31 +86,22 @@ cask "imageoptim"
 cask "vorssaint"
 
 # Media
-cask "transmission"
-cask "handbrake-app"
-cask "vlc"
 cask "iina"
-cask "plex"
-cask "spotify"
 cask "tinycast"
 
 # Terminals & editors
 cask "ghostty"
 cask "iterm2"
 cask "visual-studio-code"
-cask "zed"
-cask "cursor"
+
 
 # Development
 cask "github"
 cask "docker-desktop"
 cask "android-platform-tools"
 cask "zulu@17"
-cask "bruno"
 cask "yaak"
-cask "macusb"
 cask "figma"
-cask "ramonvermeulen/whosthere/whosthere"
 
 # Agents
 cask "claude-code"

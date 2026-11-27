@@ -27,7 +27,6 @@
     ~/.config/mise: config/mise
     ~/.config/rex: config/rex
     ~/.config/starship: config/starship
-    ~/.config/whosthere: config/whosthere
     ~/.config/yazi: config/yazi
 
 - shell:

@@ -38,7 +38,7 @@ Missing feature? Fork this repo and make it better.
 ### `git pull` never gets blocked
 
 - **`~/.config` is a real directory**, not a symlink into the repo. Linking the whole folder would let every app write its state into the repo, so only the apps in [`config/`](./config) are linked one by one. See [How `~/.config` works](#how-config-works).
-- **App-owned configs** (Zed, gh) are copied once from [`seed/`](./seed) instead of linked. `scripts/sync.sh` compares them with the repo.
+- **App-owned configs** (gh) are copied once from [`seed/`](./seed) instead of linked. `scripts/sync.sh` compares them with the repo.
 - **`update` refuses to pull over local edits** and pulls with `--rebase --autostash`.
 
 ### Shell
@@ -124,7 +124,7 @@ This command refreshes `sudo`, pulls the latest dotfiles, reruns `./install --ex
 `~/.config` is a real directory, not a symlink to this repo. Apps can write whatever they want there without touching the repo.
 
 - **Linked configs** live in [`config/`](./config) and are symlinked per app by `install.conf.yaml` (`~/.config/ghostty` → `config/ghostty`, etc.). Editing them edits the repo. To track a new app, move its folder into `config/` and add a `link:` line.
-- **App-owned configs** that apps rewrite themselves (Zed `settings.json`, gh `config.yml`) live in [`seed/`](./seed). `scripts/seed.sh` copies them into `$HOME` once, only if they're missing, so the app owns the live copy and the repo never gets dirty.
+- **App-owned configs** that apps rewrite themselves (gh `config.yml`) live in [`seed/`](./seed). `scripts/seed.sh` copies them into `$HOME` once, only if they're missing, so the app owns the live copy and the repo never gets dirty.
   - `./scripts/sync.sh` shows a diff between the live copies and `seed/`.
   - `./scripts/sync.sh --pull` copies the live copies into `seed/` so you can review and commit them.
 

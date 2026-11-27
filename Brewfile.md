@@ -23,7 +23,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 
 | Tap | Provides |
 | --- | --- |
-| [ramonvermeulen/whosthere](https://github.com/ramonvermeulen/whosthere) | `whosthere` |
 | [sinelaw/fresh](https://github.com/sinelaw/fresh) | `fresh` |
 | [taylorwilsdon/tap](https://github.com/taylorwilsdon/reclaimed) | `reclaimed` |
 
@@ -68,12 +67,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [wifi-password](https://github.com/rauchg/wifi-password) | Show the current Wi-Fi password |
 | [fresh](https://github.com/sinelaw/fresh) | Terminal text editor, the `$EDITOR` fallback |
 | [reclaimed](https://github.com/taylorwilsdon/reclaimed) | Disk usage analyzer with iCloud support |
-| [mole](https://mole.fit) | Clean up and optimize the Mac |
-| [clippy](https://github.com/neilberkman/clippy) | Copy files from the terminal so they paste into GUI apps |
-| [copyparty](https://github.com/9001/copyparty) | Portable file server |
-| [gptfdisk](https://www.rodsbooks.com/gdisk/) | Disk partitioning tools (`gdisk`) |
-| [qpdf](https://qpdf.sourceforge.io/) | Inspect and transform PDF files |
-| [audacious](https://audacious-media-player.org/) | Lightweight audio player |
 
 ## Runtimes & dev tools
 
@@ -83,7 +76,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [uv](https://docs.astral.sh/uv/) | Fast Python package and tool manager |
 | [pnpm](https://pnpm.io/) | Fast, disk-efficient JS package manager |
 | [rust](https://www.rust-lang.org/) | Rust compiler and Cargo |
-| [biome](https://biomejs.dev/) | JS/TS formatter and linter |
 | [tailwindcss](https://tailwindcss.com) | Tailwind CSS CLI |
 | [watchman](https://meta.github.io/watchman/) | File watching for Jest and React Native |
 | [cocoapods](https://cocoapods.org/) | iOS/macOS dependency manager |
@@ -103,11 +95,8 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 
 | Cask | Description |
 | --- | --- |
-| [1password](https://1password.com/) | Password manager |
 | [rectangle](https://rectangleapp.com/) | Window snapping with keyboard shortcuts |
-| [betterdisplay](https://betterdisplay.pro/) | Display resolution and scaling control |
 | [pearcleaner](https://itsalin.com/appInfo/?id=pearcleaner) | Uninstall apps and their leftover files |
-| [numi](https://numi.app/) | Text-based calculator and converter |
 | [gpg-suite](https://gpgtools.org/) | GPG keys and agent (signs git commits) |
 | [dropbox](https://www.dropbox.com/) | Cloud storage |
 | [the-unarchiver](https://theunarchiver.com/) | Open any archive format |
@@ -119,12 +108,7 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 
 | Cask | Description |
 | --- | --- |
-| [transmission](https://transmissionbt.com/) | BitTorrent client |
-| [handbrake-app](https://handbrake.fr/) | Video transcoder |
-| [vlc](https://www.videolan.org/vlc/) | Media player |
 | [iina](https://iina.io/) | Modern macOS media player |
-| [plex](https://www.plex.tv/) | Home media player |
-| [spotify](https://www.spotify.com/) | Music streaming |
 | [tinycast](https://tinycast.dev/) | App launcher |
 
 ## Terminals & editors
@@ -134,8 +118,6 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [ghostty](https://ghostty.org/) | GPU-accelerated terminal (main terminal, see [`config/ghostty`](./config/ghostty/config)) |
 | [iterm2](https://iterm2.com/) | Terminal emulator |
 | [visual-studio-code](https://code.visualstudio.com/) | Code editor, the `$EDITOR` |
-| [zed](https://zed.dev/) | Fast code editor |
-| [cursor](https://www.cursor.com/) | AI code editor |
 
 ## Development
 
@@ -145,11 +127,8 @@ Run these from the repo root, or pass `--file ~/.dotfiles/Brewfile` from anywher
 | [docker-desktop](https://www.docker.com/products/docker-desktop) | Containers |
 | [android-platform-tools](https://developer.android.com/tools/releases/platform-tools) | `adb` and `fastboot` |
 | [zulu@17](https://www.azul.com/downloads/) | OpenJDK 17 (used as `JAVA_HOME`) |
-| [bruno](https://www.usebruno.com/) | API client |
 | [yaak](https://yaak.app/) | REST, GraphQL and gRPC client |
-| [macusb](https://www.macusb.app/) | Create bootable macOS USB installers |
 | [figma](https://www.figma.com/) | Design tool |
-| [whosthere](https://github.com/ramonvermeulen/whosthere) | Local network discovery TUI |
 
 ## Agents
 
